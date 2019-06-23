@@ -3,6 +3,9 @@
 ## Art
 
 - gregroose: <https://pixabay.com/vectors/trump-donald-trump-president-usa-3123765/>
+- OpenClipart-Vectors:
+    - <https://pixabay.com/vectors/thinking-thought-bubbles-153993/>
+    - <https://pixabay.com/vectors/speech-bubble-speech-balloon-balloon-145975/>
 
 ## Fallacies
 
