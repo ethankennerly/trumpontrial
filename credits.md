@@ -1,5 +1,9 @@
 # Credits
 
+## Art
+
+- gregroose: <https://pixabay.com/vectors/trump-donald-trump-president-usa-3123765/>
+
 ## Fallacies
 
 - <https://medium.com/@lilyliao21/7-logical-fallacies-you-and-trump-are-guilty-of-committing-f06ce564b63f>
@@ -10,10 +14,7 @@
 - <https://twitter.com/davidmackau/status/1068174555418714115>
 - <http://fortune.com/2016/01/06/ford-donald-trump-mexico/>
 
+## Engineering
 
-
-
-
-
-
-
+- Marcel Căşvan: <https://gamedev.stackexchange.com/questions/79546/how-do-you-handle-aspect-ratio-differences-with-unity-2d>
+- Ethan Kennerly
