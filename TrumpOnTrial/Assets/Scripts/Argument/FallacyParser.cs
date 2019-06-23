@@ -34,7 +34,7 @@ namespace FineGameDesign.Argument
         {
             string csvText = m_FallaciesCsv.text;
             
-            m_FallaciesTable = StringUtil.ParseCsv(csvText);
+            m_FallaciesTable = StringUtil.ParseCsv(csvText, "\t");
             m_NumFallacies = m_FallaciesTable.Length - 1;
             m_Fallacies = new Fallacy[m_NumFallacies];
             string[] header = m_FallaciesTable[0];
