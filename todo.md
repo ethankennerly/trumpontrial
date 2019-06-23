@@ -1,8 +1,9 @@
 # Features
 
+1. Speech bubble displays longest trial text.
+
 # TODO
 
-1. [ ] Speech bubble displays longest trial text.
 1. [ ] Parse trials from CSV.
 1. [ ] Validate correct answer exactly once in options.
 1. [ ] Scroll prompts to identify argument.
