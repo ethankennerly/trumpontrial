@@ -35,3 +35,4 @@
 1. [ ] If correct, hear incorrect sound.
 1. [ ] When time almost up, hear sound.
 1. [ ] Hear background music.
+1. [ ] Countdown 3-2-1-GO.
