@@ -12,6 +12,10 @@ namespace FineGameDesign.Argument
 
     public sealed class ArgumentViewer : MonoBehaviour
     {
+        public delegate void Evaluate(bool correct);
+
+        public static event Evaluate OnEvaluated;
+
         [SerializeField]
         private ArgumentParser m_Parser;
 
@@ -20,7 +24,9 @@ namespace FineGameDesign.Argument
 
         private int m_ArgumentIndex = -1;
 
-        private FallacySubmitter.Submit m_NextArgumentDelegate;
+        private bool m_Correct;
+
+        private FallacySubmitter.Submit m_EvaluateFallacyDelegate;
 
         private void Awake()
         {
@@ -30,16 +36,28 @@ namespace FineGameDesign.Argument
 
         private void OnEnable()
         {
-            if (m_NextArgumentDelegate == null)
-                m_NextArgumentDelegate = NextArgument;
+            if (m_EvaluateFallacyDelegate == null)
+                m_EvaluateFallacyDelegate = EvaluateFallacy;
 
-            FallacySubmitter.OnSubmitted -= m_NextArgumentDelegate;
-            FallacySubmitter.OnSubmitted += m_NextArgumentDelegate;
+            FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
+            FallacySubmitter.OnSubmitted += m_EvaluateFallacyDelegate;
         }
 
         private void OnDisable()
         {
-            FallacySubmitter.OnSubmitted -= m_NextArgumentDelegate;
+            FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
+        }
+
+        private void EvaluateFallacy(string fallacyOptionText)
+        {
+            Argument argument = m_Parser.Arguments[m_ArgumentIndex];
+            m_Correct = fallacyOptionText == argument.correctFallacyOptionText;
+
+            if (OnEvaluated != null)
+                OnEvaluated.Invoke(m_Correct);
+
+            if (m_Correct)
+                NextArgument();
         }
 
         private void NextArgument()

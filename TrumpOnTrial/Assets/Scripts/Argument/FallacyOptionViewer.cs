@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FineGameDesign.Argument
 {
@@ -57,6 +58,30 @@ namespace FineGameDesign.Argument
                 optionView.optionRoot.SetActive(false);
                 optionView.optionText.text = "";
             }
+        }
+
+        private Vector3[] m_OptionWorldCornersCorners = new Vector3[4];
+        private OptionView m_OverlappingOption;
+        private float m_OverlappingY;
+
+        public string GetOptionTextOverlappingY(float y)
+        {
+            m_OverlappingY = y;
+            m_OverlappingOption = default(OptionView);
+            foreach (OptionView optionView in m_OptionViews)
+            {
+                RectTransform optionRect = optionView.optionRoot.GetComponent<RectTransform>();
+                optionRect.GetWorldCorners(m_OptionWorldCornersCorners);
+                float bottom = m_OptionWorldCornersCorners[0].y;
+                float top = m_OptionWorldCornersCorners[1].y;
+                if (y < bottom || y > top)
+                    continue;
+
+                m_OverlappingOption = optionView;
+                return optionView.optionText.text;
+            }
+
+            return null;
         }
     }
 }
