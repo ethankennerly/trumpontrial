@@ -11,24 +11,20 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Button on each option.
 1. Submit button appears to enable selection.
 1. Snap scroll to first content on argument populated.
+1. If wrong, animate text of Trump saying "WRONG."
+1. During feedback, hide input and argument.
+1. After feedback, then show next argument.
+1. If correct, animate Trump saying "True. But..."
+1. Sort arguments by estimated difficulty.
 
 # TODO
 
-1. [ ] When Jen taps the gavel, how can she see feedback?
-1. [ ] If wrong, animate text of Trump saying "WRONG."
-1. [ ] During feedback, hide input and argument.
-1. [ ] After feedback, then show next argument.
-1. [ ] If correct, animate Trump saying "True. But..."
-1. [ ] If correct, animate shuffled text.
-1. [ ] If wrong, animate shuffled text.
-1. [ ] Animation fraction correlates to win progress.
-1. [ ] Win meter starts small fraction full.
-1. [ ] Wrong answer reduces max win progress fraction.
-1. [ ] Correct answer increases win progress.
 1. [ ] Hear button sound.
 1. [ ] If correct, hear correct sound.
 1. [ ] If wrong, hear wrong sound.
-1. [ ] Sort arguments by estimated difficulty.
+1. [ ] Animation fraction correlates to win progress.
+1. [ ] Wrong answer reduces max win progress fraction.
+1. [ ] Correct answer increases win progress.
 1. [ ] Three stars on win meter.
 1. [ ] When pass star, highlight star.
 1. [ ] When all trials answered, end game.
@@ -39,6 +35,8 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 # Nice to have
 
 1. [ ] Hear background music.
+1. [ ] If correct, animate shuffled text.
+1. [ ] If wrong, animate shuffled text.
 1. [ ] At top left, read countdown timer.
 1. [ ] After time up, end game.
 1. [ ] When time almost up, highlight timer.
