@@ -177,9 +177,29 @@ PrefabInstance:
       objectReference: {fileID: 8087786880996960462}
     - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
         type: 3}
+      propertyPath: m_ArgumentView.userInterfaceAnimator
+      value: 
+      objectReference: {fileID: 3260829871426118454}
+    - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
+        type: 3}
+      propertyPath: m_ArgumentView.openAnimationName
+      value: ArgumentOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
+        type: 3}
+      propertyPath: m_ArgumentView.closeAnimationName
+      value: ArgumentClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
+        type: 3}
       propertyPath: m_ArgumentView.argumentText
       value: 
       objectReference: {fileID: 2758834229918200289}
+    - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
+        type: 3}
+      propertyPath: m_Feedback
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db25df94708b824a98d51872cb77d06, type: 3}
 --- !u!224 &4266710024551461998 stripped
@@ -339,6 +359,11 @@ PrefabInstance:
       propertyPath: m_OptionViewer
       value: 
       objectReference: {fileID: 6817575518751657890}
+    - target: {fileID: 7463769646362366753, guid: ea4feeee1c4f1bb42810baa72126adaf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -175.5752
+      objectReference: {fileID: 0}
     - target: {fileID: 5318785231685244894, guid: ea4feeee1c4f1bb42810baa72126adaf,
         type: 3}
       propertyPath: m_TargetGraphic
@@ -777,6 +802,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 804335521, guid: 08280b388daa49c409c97754a47eb097, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 667497826, guid: 08280b388daa49c409c97754a47eb097, type: 3}
       propertyPath: m_Content
