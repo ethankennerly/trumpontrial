@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7865710871502774408}
   m_Layer: 5
-  m_Name: Option
+  m_Name: OptionPrompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
