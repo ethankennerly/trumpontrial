@@ -10,6 +10,8 @@
 
 ## Fallacies
 
+- [Funny intro to fallacies](https://www.boredpanda.com/bad-argument-false-fallacies-dummies)
+
 - <https://medium.com/@lilyliao21/7-logical-fallacies-you-and-trump-are-guilty-of-committing-f06ce564b63f>
 - <http://www.heygirlcommunique.com/home/2016/8/5/spotting-logical-fallacies-this-election-season>
 - <https://thehill.com/opinion/white-house/443999-a-reality-based-game-for-trump-watchers-name-that-fallacy>
