@@ -22,6 +22,7 @@ namespace FineGameDesign.Argument
         }
 
         private int m_NumFallacies;
+        private bool m_Parsed;
 
         public static FallacyParser instance;
 
@@ -30,8 +31,14 @@ namespace FineGameDesign.Argument
             instance = this;
         }
 
-        public void ParseFallacies()
+        public void ParseFallaciesOnce()
         {
+            if (m_Parsed)
+            {
+                return;
+            }
+            m_Parsed = true;
+
             string csvText = m_FallaciesCsv.text;
             
             m_FallaciesTable = StringUtil.ParseCsv(csvText, "\t");

@@ -41,11 +41,14 @@ namespace FineGameDesign.Argument
 
             FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
             FallacySubmitter.OnSubmitted += m_EvaluateFallacyDelegate;
+            FallacyOptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
+            FallacyOptionViewer.OnTextSelected += m_EvaluateFallacyDelegate;
         }
 
         private void OnDisable()
         {
             FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
+            FallacyOptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
         }
 
         private void EvaluateFallacy(string fallacyOptionText)

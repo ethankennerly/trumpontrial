@@ -8,11 +8,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Scroll prompts to identify argument.
 1. Tap button submits option in range.
 1. Correct answer corresponds to answer key.
+1. Button on each option.
 
 # TODO
 
 1. [ ] How can Jen select an option?
-1. [ ] Button on each option.
 1. [ ] Submit button appears to enable selection.
 1. [ ] Snap scroll to option.
 1. [ ] When Jen taps the gavel, how can she see feedback?
