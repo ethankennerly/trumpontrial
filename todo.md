@@ -10,13 +10,14 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Correct answer corresponds to answer key.
 1. Button on each option.
 1. Submit button appears to enable selection.
+1. Snap scroll to first content on argument populated.
 
 # TODO
 
 1. [ ] How can Jen select an option?
-1. [ ] Snap scroll to option.
+1. [ ] When mouse up, drift to snap scroll to option.
+1. [ ] Keyboard arrows scroll options.
 1. [ ] When Jen taps the gavel, how can she see feedback?
-1. [ ] Reset scroll on next argument.
 1. [ ] If correct, read shuffled text.
 1. [ ] If incorrect, read shuffled text.
 1. [ ] Animation fraction correlates to win progress.

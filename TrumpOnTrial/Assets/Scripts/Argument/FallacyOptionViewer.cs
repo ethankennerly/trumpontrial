@@ -115,7 +115,7 @@ namespace FineGameDesign.Argument
                 return;
             }
 
-            optionView.optionButton.onClick.RemoveListener(optionView.onThisSelected);
+            optionView.optionButton.onClick.RemoveAllListeners();
         }
 
         private static void SelectOptionText(string selectedText)
