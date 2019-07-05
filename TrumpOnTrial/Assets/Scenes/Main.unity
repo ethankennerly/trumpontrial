@@ -364,6 +364,11 @@ PrefabInstance:
       propertyPath: m_Feedback
       value: 
       objectReference: {fileID: 2097697479503739197}
+    - target: {fileID: 21731772869356927, guid: 8cdcd95c6e9f3eb409f2e0d4a31fd810,
+        type: 3}
+      propertyPath: m_ProgressAnimator
+      value: 
+      objectReference: {fileID: 5113862469098514538}
     - target: {fileID: 2758834229918200289, guid: 8cdcd95c6e9f3eb409f2e0d4a31fd810,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -797,6 +802,8 @@ MonoBehaviour:
     animator: {fileID: 5113862469098514539}
     animationName: Progress
     progress: 0
+    quantity: 0
+    total: 0
 --- !u!95 &5113862469098514539
 Animator:
   serializedVersion: 3

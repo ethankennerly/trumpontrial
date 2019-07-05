@@ -19,10 +19,10 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. On Answer, hear button sound.
 1. If correct, hear correct sound.
 1. If wrong, hear different sound.
+1. Goto progress animator increments when correct.
 
 # TODO
 
-1. [ ] Animation fraction correlates to win progress.
 1. [ ] Wrong answer reduces max win progress fraction.
 1. [ ] Correct answer increases win progress.
 1. [ ] Three stars on win meter.

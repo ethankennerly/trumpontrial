@@ -1,3 +1,4 @@
+using FineGameDesign.Animation;
 using FineGameDesign.UI;
 using System;
 using TMPro;
@@ -32,6 +33,9 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private AnswerFeedbackPublisher m_Feedback;
 
+        [SerializeField]
+        private GotoProgressAnimator m_ProgressAnimator;
+
         private int m_ArgumentIndex = -1;
 
         private bool m_Correct;
@@ -45,6 +49,9 @@ namespace FineGameDesign.Argument
         private void Awake()
         {
             m_Parser.ParseArguments();
+            int numArguments = m_Parser.Arguments.Length;
+            m_ProgressAnimator.SetTotal(numArguments);
+
             NextArgument();
         }
 
@@ -100,6 +107,10 @@ namespace FineGameDesign.Argument
             m_Correct = fallacyOptionText == argument.correctFallacyOptionText;
 
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closeAnimationName);
+            if (m_Correct)
+            {
+                m_ProgressAnimator.AddQuantity(1f);
+            }
 
             if (OnEvaluated != null)
             {

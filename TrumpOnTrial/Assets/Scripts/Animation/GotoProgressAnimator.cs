@@ -9,6 +9,8 @@ namespace FineGameDesign.Animation
         public Animator animator;
         public string animationName;
         public float progress;
+        public float quantity;
+        public float total;
     }
 
     public sealed class GotoProgressAnimator : MonoBehaviour
@@ -24,6 +26,18 @@ namespace FineGameDesign.Animation
         public void Goto(float progress)
         {
             ProgressAnimator.GotoProgress(m_AnimatedProgress, progress);
+        }
+
+        public void SetTotal(float total)
+        {
+            m_AnimatedProgress.total = total;
+            ProgressAnimator.UpdateProgress(ref m_AnimatedProgress);
+        }
+
+        public void AddQuantity(float increment)
+        {
+            m_AnimatedProgress.quantity += increment;
+            ProgressAnimator.UpdateProgress(ref m_AnimatedProgress);
         }
     }
 
@@ -62,6 +76,25 @@ namespace FineGameDesign.Animation
             }
 
             animator.Play(animationName, -1, progress);
+        }
+
+        public static void CalculateProgress(ref AnimatedProgress animatedProgress)
+        {
+            if (animatedProgress.total <= animatedProgress.quantity ||
+                animatedProgress.total == 0f)
+            {
+                animatedProgress.progress = 1f;
+            }
+            else
+            {
+                animatedProgress.progress = animatedProgress.quantity / animatedProgress.total;
+            }
+        }
+
+        public static void UpdateProgress(ref AnimatedProgress animatedProgress)
+        {
+            CalculateProgress(ref animatedProgress);
+            GotoProgress(animatedProgress);
         }
     }
 }
