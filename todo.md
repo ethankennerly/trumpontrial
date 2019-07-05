@@ -20,20 +20,19 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. If correct, hear correct sound.
 1. If wrong, hear different sound.
 1. Goto progress animator increments when correct.
+1. Wrong answer increments opponent progress bar.
 
 # TODO
 
-1. [ ] Wrong answer reduces max win progress fraction.
-1. [ ] Correct answer increases win progress.
-1. [ ] Three stars on win meter.
-1. [ ] When pass star, highlight star.
 1. [ ] When all trials answered, end game.
-1. [ ] Results screen shows progress, accuracy, time.
+1. [ ] Results screen shows accuracy and time.
 1. [ ] Title screen: Trump on Trial.
 1. [ ] Options: Start. Uses same dial as trials.
 
 # Nice to have
 
+1. [ ] Three stars on win meter.
+1. [ ] When pass star, highlight star.
 1. [ ] Hear background music.
 1. [ ] If correct, animate shuffled text.
 1. [ ] If wrong, animate shuffled text.

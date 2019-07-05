@@ -36,6 +36,9 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private GotoProgressAnimator m_ProgressAnimator;
 
+        [SerializeField]
+        private GotoProgressAnimator m_OpponentProgressAnimator;
+
         private int m_ArgumentIndex = -1;
 
         private bool m_Correct;
@@ -51,6 +54,7 @@ namespace FineGameDesign.Argument
             m_Parser.ParseArguments();
             int numArguments = m_Parser.Arguments.Length;
             m_ProgressAnimator.SetTotal(numArguments);
+            m_OpponentProgressAnimator.SetTotal(numArguments);
 
             NextArgument();
         }
@@ -110,6 +114,10 @@ namespace FineGameDesign.Argument
             if (m_Correct)
             {
                 m_ProgressAnimator.AddQuantity(1f);
+            }
+            else
+            {
+                m_OpponentProgressAnimator.AddQuantity(1f);
             }
 
             if (OnEvaluated != null)
