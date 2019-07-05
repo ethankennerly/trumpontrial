@@ -8,6 +8,12 @@
 - Sarah <http://www.clker.com/clipart-speech-bubble-32.html>
 - Succo <https://pixabay.com/vectors/hammer-court-law-right-justice-1278402/>
 
+## Audio
+
+- zerolagtime:
+    - <https://freesound.org/people/zerolagtime/sounds/70070/>
+    - <https://freesound.org/people/zerolagtime/sounds/70071/>
+
 ## Fallacies
 
 - [Funny intro to fallacies](https://www.boredpanda.com/bad-argument-false-fallacies-dummies)

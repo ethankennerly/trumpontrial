@@ -16,12 +16,12 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. After feedback, then show next argument.
 1. If correct, animate Trump saying "True. But..."
 1. Sort arguments by estimated difficulty.
+1. On Answer, hear button sound.
+1. If correct, hear correct sound.
+1. If wrong, hear different sound.
 
 # TODO
 
-1. [ ] Hear button sound.
-1. [ ] If correct, hear correct sound.
-1. [ ] If wrong, hear wrong sound.
 1. [ ] Animation fraction correlates to win progress.
 1. [ ] Wrong answer reduces max win progress fraction.
 1. [ ] Correct answer increases win progress.
