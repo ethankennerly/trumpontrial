@@ -2,6 +2,7 @@
 
 ## Art
 
+- Blue Cartoon UI <https://assetstore.unity.com/packages/2d/gui/blue-cartoon-gui-skin-19535>
 - gregroose: <https://pixabay.com/vectors/trump-donald-trump-president-usa-3123765/>
 - OpenClipart-Vectors:
     - <https://pixabay.com/vectors/thinking-thought-bubbles-153993/>
