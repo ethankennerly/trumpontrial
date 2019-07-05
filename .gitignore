@@ -12,11 +12,6 @@ Assets/AssetStoreTools*
 /*/[Bb]uilds/
 /*/Assets/AssetStoreTools*
 
-# You can import Blue Cartoon GUI from the asset store for free:
-# https://assetstore.unity.com/packages/2d/gui/blue-cartoon-gui-skin-19535
-/*/Assets/Blue Cartoon UI
-/*/Assets/Blue Cartoon UI.meta
-
 # Visual Studio cache directory
 .vs/
 
