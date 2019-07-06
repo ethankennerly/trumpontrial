@@ -9,11 +9,12 @@ namespace FineGameDesign.UI
         public Animator animator;
         public string correctAnimationName;
         public string wrongAnimationName;
+        internal bool correct;
     }
 
     public sealed class AnswerFeedbackPublisher : MonoBehaviour
     {
-        public delegate void FeedbackComplete();
+        public delegate void FeedbackComplete(bool correct);
 
         public static event FeedbackComplete OnComplete;
 
@@ -22,6 +23,8 @@ namespace FineGameDesign.UI
 
         public void DisplayFeedback(bool correct)
         {
+            m_View.correct = correct;
+
             string animationName = correct ?
                 m_View.correctAnimationName :
                 m_View.wrongAnimationName;
@@ -36,7 +39,7 @@ namespace FineGameDesign.UI
                 return;
             }
 
-            OnComplete.Invoke();
+            OnComplete.Invoke(m_View.correct);
         }
     }
 }

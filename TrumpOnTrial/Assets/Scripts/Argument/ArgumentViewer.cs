@@ -42,6 +42,9 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private bool m_Verbose = false;
 
+        [SerializeField]
+        private FallacyLister m_FallacyLister;
+
         private int m_ArgumentIndex = -1;
 
         private bool m_Correct;
@@ -51,6 +54,17 @@ namespace FineGameDesign.Argument
         private Evaluate m_DisplayFeedbackAction;
 
         private AnswerFeedbackPublisher.FeedbackComplete m_OnFeedbackComplete;
+        private AnswerFeedbackPublisher.FeedbackComplete OnFeedbackComplete
+        {
+            get
+            {
+                if (m_OnFeedbackComplete == null)
+                {
+                    m_OnFeedbackComplete = NextArgument;
+                }
+                return m_OnFeedbackComplete;
+            }
+        }
 
         private void Start()
         {
@@ -90,20 +104,15 @@ namespace FineGameDesign.Argument
             OnEvaluated -= m_DisplayFeedbackAction;
             OnEvaluated += m_DisplayFeedbackAction;
 
-            if (m_OnFeedbackComplete == null)
-            {
-                m_OnFeedbackComplete = NextArgument;
-            }
-
-            AnswerFeedbackPublisher.OnComplete -= m_OnFeedbackComplete;
-            AnswerFeedbackPublisher.OnComplete += m_OnFeedbackComplete;
+            AnswerFeedbackPublisher.OnComplete -= OnFeedbackComplete;
+            AnswerFeedbackPublisher.OnComplete += OnFeedbackComplete;
         }
 
         private void OnDisable()
         {
             FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
             FallacyOptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
-            AnswerFeedbackPublisher.OnComplete -= m_OnFeedbackComplete;
+            AnswerFeedbackPublisher.OnComplete -= OnFeedbackComplete;
             OnEvaluated -= m_DisplayFeedbackAction;
         }
 
@@ -128,7 +137,12 @@ namespace FineGameDesign.Argument
             }
         }
 
-        public void NextArgument()
+        public void StartArguments()
+        {
+            NextArgument(true);
+        }
+
+        private void NextArgument(bool correct)
         {
             if (m_Verbose)
             {
@@ -142,7 +156,10 @@ namespace FineGameDesign.Argument
                 return;
             }
 
-            PopulateText(m_Parser.Arguments[m_ArgumentIndex], m_ArgumentView);
+            Argument argument = m_Parser.Arguments[m_ArgumentIndex];
+            PopulateText(argument, m_ArgumentView);
+
+            m_FallacyLister.Adjust(argument.correctFallacyOptionText, m_Correct);
 
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.openAnimationName);
 

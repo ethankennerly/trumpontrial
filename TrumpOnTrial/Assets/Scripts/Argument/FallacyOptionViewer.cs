@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,20 +21,40 @@ namespace FineGameDesign.Argument
         public static event FallacySubmitter.Submit OnTextSelected;
 
         [SerializeField]
-        private FallacyParser m_Parser;
+        private FallacyLister m_Lister;
 
         [SerializeField]
         private OptionView[] m_OptionViews;
 
+        private FallacyLister.Populate m_OnOptionsChanged;
+        private FallacyLister.Populate OnOptionsChanged
+        {
+            get
+            {
+                if (m_OnOptionsChanged == null)
+                {
+                    m_OnOptionsChanged = UpdateOptions;
+                }
+                return m_OnOptionsChanged;
+            }
+        }
+
         private void OnEnable()
         {
-            m_Parser.ParseFallaciesOnce();
-            PopulateOptions(m_Parser.Fallacies, m_OptionViews);
+            m_Lister.OnOptionsChanged -= OnOptionsChanged;
+            m_Lister.OnOptionsChanged += OnOptionsChanged;
+            UpdateOptions(m_Lister.Difficulty.options);
         }
 
         private void OnDisable()
         {
+            m_Lister.OnOptionsChanged -= OnOptionsChanged;
             RemoveListeners(m_OptionViews);
+        }
+
+        private void UpdateOptions(List<Fallacy> fallacies)
+        {
+            PopulateOptions(fallacies, m_OptionViews);
         }
 
         /// <summary>
@@ -42,10 +63,11 @@ namespace FineGameDesign.Argument
         ///
         /// Assigns option index and button subscribes to selected event.
         /// </summary>
-        private static void PopulateOptions(Fallacy[] fallacies,
+        private static void PopulateOptions(
+            List<Fallacy> fallacies,
             OptionView[] optionViews)
         {
-            int numFallacies = fallacies.Length;
+            int numFallacies = fallacies == null ? 0 : fallacies.Count;
             int numOptions = optionViews.Length;
             Debug.Assert(numOptions >= numFallacies,
                 "Expected at least " + numOptions + " option views " +

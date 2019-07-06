@@ -43,7 +43,7 @@ namespace FineGameDesign.Argument
         /// </remarks>
         public void OnClosed()
         {
-            m_StartUI.argumentViewer.NextArgument();
+            m_StartUI.argumentViewer.StartArguments();
         }
     }
 }

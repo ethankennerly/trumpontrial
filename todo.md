@@ -27,19 +27,18 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Dial on results to replay.
 1. Title screen: Trump on Trial.
 1. Options: Start. Uses same dial as trials.
+1. Correct answer increases number of fallacies.
 
 # Nice to have
 
-1. [ ] First arguments fewer, random fallacies.
 1. [ ] Blue cartoon button style.
 1. [ ] Blue cartoon font.
+1. [ ] Three stars on win meter.
+1. [ ] When pass star, highlight star.
 1. [ ] Short session setting configures 2 trials.
 1. [ ] Settings option on title screen.
 1. [ ] Estimate difficulty of recognizing fallacy.
-1. [ ] Reduce options to easiest number of fallacies.
 1. [ ] Slider setting speeds up time scale.
-1. [ ] Three stars on win meter.
-1. [ ] When pass star, highlight star.
 1. [ ] Hear background music.
 1. [ ] If correct, animate shuffled text.
 1. [ ] If wrong, animate shuffled text.
