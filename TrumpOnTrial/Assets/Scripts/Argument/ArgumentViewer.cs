@@ -12,6 +12,7 @@ namespace FineGameDesign.Argument
         public Animator userInterfaceAnimator;
         public string openAnimationName;
         public string closeAnimationName;
+        public string closedAnimationName;
         public TMP_Text argumentText;
     }
 
@@ -24,19 +25,22 @@ namespace FineGameDesign.Argument
         public static event PopulateArgument OnArgumentPopulated;
 
         [SerializeField]
-        private ArgumentParser m_Parser;
+        private ArgumentParser m_Parser = null;
 
         [SerializeField]
-        private ArgumentView m_ArgumentView;
+        private ArgumentView m_ArgumentView = default(ArgumentView);
 
         [SerializeField]
-        private AnswerFeedbackPublisher m_Feedback;
+        private AnswerFeedbackPublisher m_Feedback = null;
 
         [SerializeField]
-        private GotoProgressAnimator m_ProgressAnimator;
+        private GotoProgressAnimator m_ProgressAnimator = null;
 
         [SerializeField]
-        private GotoProgressAnimator m_OpponentProgressAnimator;
+        private GotoProgressAnimator m_OpponentProgressAnimator = null;
+
+        [SerializeField]
+        private bool m_Verbose = false;
 
         private int m_ArgumentIndex = -1;
 
@@ -48,13 +52,13 @@ namespace FineGameDesign.Argument
 
         private AnswerFeedbackPublisher.FeedbackComplete m_OnFeedbackComplete;
 
-        private void Awake()
+        private void Start()
         {
             m_Parser.ParseArguments();
             m_ProgressAnimator.SetTotal(m_Parser.NumArguments);
             m_OpponentProgressAnimator.SetTotal(m_Parser.NumArguments);
-
-            NextArgument();
+            
+            m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closedAnimationName);
         }
 
         private void OnEnable()
@@ -124,8 +128,13 @@ namespace FineGameDesign.Argument
             }
         }
 
-        private void NextArgument()
+        public void NextArgument()
         {
+            if (m_Verbose)
+            {
+                Debug.Log("NextArgument", context: this);
+            }
+
             m_ArgumentIndex++;
             if (m_ArgumentIndex >= m_Parser.NumArguments)
             {

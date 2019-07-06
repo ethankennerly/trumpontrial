@@ -25,18 +25,16 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. After a number of arguments, end arguments.
 1. Results screen displays accuracy percent.
 1. Dial on results to replay.
-
-# TODO
-
-1. [ ] Title screen: Trump on Trial.
-1. [ ] Options: Start. Uses same dial as trials.
+1. Title screen: Trump on Trial.
+1. Options: Start. Uses same dial as trials.
 
 # Nice to have
 
-1. [ ] Short session setting configures 2 trials.
-1. [ ] Settings option on title screen.
+1. [ ] First arguments fewer, random fallacies.
 1. [ ] Blue cartoon button style.
 1. [ ] Blue cartoon font.
+1. [ ] Short session setting configures 2 trials.
+1. [ ] Settings option on title screen.
 1. [ ] Estimate difficulty of recognizing fallacy.
 1. [ ] Reduce options to easiest number of fallacies.
 1. [ ] Slider setting speeds up time scale.
