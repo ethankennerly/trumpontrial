@@ -1,6 +1,3 @@
-// Copied from:
-// https://github.com/ethankennerly/ludumdare44/blob/65ed712b9c9fb864a2dc2367ddd21c27cc432996/LudumDare44/Assets/Scripts/ScrollRectSnapper.cs
-
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,31 +8,33 @@ namespace FineGameDesign.UI
     public struct ScrollView
     {
         public ScrollRect scrollRect;
+        internal RectTransform target;
+        internal Vector2 nextContentPosition;
     }
 
     public static class ScrollRectSnapper
     {
-        public static void SnapTo(ScrollRect scroll, int contentIndex)
+        public static void SnapToFirst(ref ScrollView scrollView)
         {
-            Transform target = GetChild(scroll.content, contentIndex);
-            SnapTo(scroll, target);
-        }
-
-        public static void SnapToFirst(ScrollRect scroll)
-        {
-            Transform target = GetChild(scroll.content, 0);
-            SnapTo(scroll, target);
+            scrollView.target = (RectTransform)GetChild(scrollView.scrollRect.content, 0);
+            SnapToTarget(ref scrollView);
         }
 
         /// <remarks>
-        /// Depends on content Rect Transform not stretching or anchoring in any dimension.
-        /// Adapted from:
+        /// Depends on target being the immediate child of content.
+        /// And on content scale being 100%.
+        ///
+        /// Does not transform from world to local.
+        /// Otherwise, that approach failed when reloading the active scene.
         /// <a href="https://stackoverflow.com/questions/30766020/how-to-scroll-to-a-specific-element-in-scrollrect-with-unity-ui#_=_">
         /// How to scroll to a specific element in ScrollRect with Unity UI?
         /// </a>
         /// </remarks>
-        public static void SnapTo(ScrollRect scroll, Transform target)
+        public static void SnapToTarget(ref ScrollView scrollView)
         {
+            ScrollRect scroll = scrollView.scrollRect;
+            RectTransform target = scrollView.target;
+
             if (scroll == null)
             {
                 Debug.LogError("Expected scroll was defined.");
@@ -58,14 +57,17 @@ namespace FineGameDesign.UI
 
             Canvas.ForceUpdateCanvases();
 
-            Vector2 contentInScroll = scrollTransform.InverseTransformPoint(content.position);
-            Vector2 targetInScroll = scrollTransform.InverseTransformPoint(target.position);
-            Vector2 nextContentPosition = contentInScroll - targetInScroll;
+            scrollView.nextContentPosition = -target.anchoredPosition;
+
             if (!scroll.horizontal)
-                nextContentPosition.x = contentInScroll.x;
+            {
+                scrollView.nextContentPosition.x = content.anchoredPosition.x;
+            }
             if (!scroll.vertical)
-                nextContentPosition.y = contentInScroll.y;
-            content.anchoredPosition = nextContentPosition;
+            {
+                scrollView.nextContentPosition.x = content.anchoredPosition.y;
+            }
+            content.anchoredPosition = scrollView.nextContentPosition;
         }
 
         public static Transform GetChild(Transform parent, int childIndex)

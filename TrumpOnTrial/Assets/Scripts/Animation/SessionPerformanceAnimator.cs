@@ -35,12 +35,16 @@ namespace FineGameDesign.Animation
 
         private void OnEnable()
         {
+            m_ResultsUI.animator.speed = 0f;
+
             SessionPerformance.OnSummarized -= OnSummarized;
             SessionPerformance.OnSummarized += OnSummarized;
         }
 
         private void OnDisable()
         {
+            m_ResultsUI.animator.speed = 1f;
+
             SessionPerformance.OnSummarized -= OnSummarized;
         }
 
@@ -49,6 +53,8 @@ namespace FineGameDesign.Animation
             m_Results = results;
             int accuracyPercent = (int)Mathf.Round(100 * results.progress);
             m_ResultsUI.accuracyText.text = accuracyPercent.ToString() + "%";
+
+            m_ResultsUI.animator.speed = 1f;
             m_ResultsUI.animator.Play(m_ResultsUI.animationName, -1, 0f);
         }
     }

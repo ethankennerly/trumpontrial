@@ -24,17 +24,22 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Parser inspector overrides number of arguments.
 1. After a number of arguments, end arguments.
 1. Results screen displays accuracy percent.
+1. Dial on results to replay.
 
 # TODO
 
-1. [ ] Dial on results to restart.
 1. [ ] Title screen: Trump on Trial.
 1. [ ] Options: Start. Uses same dial as trials.
 
 # Nice to have
 
-1. [ ] Cheat changes number of trials.
-1. [ ] Cheat speeds up time scale.
+1. [ ] Short session setting configures 2 trials.
+1. [ ] Settings option on title screen.
+1. [ ] Blue cartoon button style.
+1. [ ] Blue cartoon font.
+1. [ ] Estimate difficulty of recognizing fallacy.
+1. [ ] Reduce options to easiest number of fallacies.
+1. [ ] Slider setting speeds up time scale.
 1. [ ] Three stars on win meter.
 1. [ ] When pass star, highlight star.
 1. [ ] Hear background music.
