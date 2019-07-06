@@ -16,12 +16,22 @@ namespace FineGameDesign.Argument
         public UnityAction onThisSelected;
     }
 
+    [Serializable]
+    public struct ContentSize
+    {
+        public RectTransform content;
+        public float heightPerOption;
+    }
+
     public sealed class FallacyOptionViewer : MonoBehaviour
     {
         public static event FallacySubmitter.Submit OnTextSelected;
 
         [SerializeField]
         private FallacyLister m_Lister;
+
+        [SerializeField]
+        private ContentSize m_ContentSize;
 
         [SerializeField]
         private OptionView[] m_OptionViews;
@@ -55,6 +65,7 @@ namespace FineGameDesign.Argument
         private void UpdateOptions(List<Fallacy> fallacies)
         {
             PopulateOptions(fallacies, m_OptionViews);
+            ResizeContent(m_ContentSize, fallacies.Count);
         }
 
         /// <summary>
@@ -94,6 +105,15 @@ namespace FineGameDesign.Argument
 
                 RemoveListener(optionView);
             }
+        }
+
+        private static void ResizeContent(ContentSize size, int numOptions, int borderOptions = 3)
+        {
+            int reservedOptions = numOptions + borderOptions;
+            float height = size.heightPerOption * reservedOptions;
+            Vector2 contentSize = size.content.sizeDelta;
+            contentSize.y = height;
+            size.content.sizeDelta = contentSize;
         }
 
         private static void AddListener(OptionView optionView, string optionText)

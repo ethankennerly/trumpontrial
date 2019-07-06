@@ -27,7 +27,8 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Dial on results to replay.
 1. Title screen: Trump on Trial.
 1. Options: Start. Uses same dial as trials.
-1. Correct answer increases number of fallacies.
+1. Each correct answer increases number of fallacies.
+1. Clamp content when fewer options.
 
 # Nice to have
 

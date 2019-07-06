@@ -630,6 +630,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efeb726de4e14e74480eac1d225a0511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Lister: {fileID: 2034800493957151304}
+  m_ContentSize:
+    content: {fileID: 395231730}
+    heightPerOption: 80
   m_OptionViews:
   - optionRoot: {fileID: 1661802036711793070}
     optionText: {fileID: 4265090367978792662}
@@ -655,7 +659,6 @@ MonoBehaviour:
   - optionRoot: {fileID: 8457404566276149366}
     optionText: {fileID: 6440694570908047118}
     optionButton: {fileID: 3929523583675676411}
-  m_Lister: {fileID: 2034800493957151304}
 --- !u!1 &8035639060165263970
 GameObject:
   m_ObjectHideFlags: 0
