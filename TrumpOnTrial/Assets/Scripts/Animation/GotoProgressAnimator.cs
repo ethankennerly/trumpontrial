@@ -17,15 +17,14 @@ namespace FineGameDesign.Animation
     {
         [SerializeField]
         private AnimatedProgress m_AnimatedProgress;
+        public AnimatedProgress AnimatedProgress
+        {
+            get { return m_AnimatedProgress; }
+        }
 
         private void Start()
         {
             ProgressAnimator.GotoProgress(m_AnimatedProgress);
-        }
-
-        public void Goto(float progress)
-        {
-            ProgressAnimator.GotoProgress(m_AnimatedProgress, progress);
         }
 
         public void SetTotal(float total)

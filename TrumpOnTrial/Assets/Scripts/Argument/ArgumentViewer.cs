@@ -18,10 +18,9 @@ namespace FineGameDesign.Argument
     public sealed class ArgumentViewer : MonoBehaviour
     {
         public delegate void Evaluate(bool correct);
-        public delegate void PopulateArgument();
-
         public static event Evaluate OnEvaluated;
 
+        public delegate void PopulateArgument();
         public static event PopulateArgument OnArgumentPopulated;
 
         [SerializeField]
@@ -130,7 +129,8 @@ namespace FineGameDesign.Argument
             m_ArgumentIndex++;
             if (m_ArgumentIndex >= m_Parser.NumArguments)
             {
-                m_ArgumentIndex = 0;
+                SessionPerformance.Publish(m_ProgressAnimator.AnimatedProgress);
+                return;
             }
 
             PopulateText(m_Parser.Arguments[m_ArgumentIndex], m_ArgumentView);

@@ -22,16 +22,19 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Goto progress animator increments when correct.
 1. Wrong answer increments opponent progress bar.
 1. Parser inspector overrides number of arguments.
+1. After a number of arguments, end arguments.
+1. Results screen displays accuracy percent.
 
 # TODO
 
-1. [ ] After a number of arguments, end game.
-1. [ ] Results screen shows accuracy and time.
+1. [ ] Dial on results to restart.
 1. [ ] Title screen: Trump on Trial.
 1. [ ] Options: Start. Uses same dial as trials.
 
 # Nice to have
 
+1. [ ] Cheat changes number of trials.
+1. [ ] Cheat speeds up time scale.
 1. [ ] Three stars on win meter.
 1. [ ] When pass star, highlight star.
 1. [ ] Hear background music.
@@ -46,6 +49,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. [ ] If wrong, wrong icon flies to meter.
 1. [ ] If correct, animate Trump speech shattering.
 1. [ ] If wrong, animate bottom speech shattering.
+1. [ ] Results screen displays time.
 1. [ ] Answer feedback pauses timer.
 1. [ ] Timer shows: November 2016 to November 2020.
 1. [ ] When time almost up, hear sound.
