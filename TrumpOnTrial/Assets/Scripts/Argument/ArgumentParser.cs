@@ -25,7 +25,12 @@ namespace FineGameDesign.Argument
             get { return m_Arguments; }
         }
 
+        [SerializeField]
         private int m_NumArguments;
+        public int NumArguments
+        {
+            get { return m_NumArguments; }
+        }
 
         public static ArgumentParser instance;
 

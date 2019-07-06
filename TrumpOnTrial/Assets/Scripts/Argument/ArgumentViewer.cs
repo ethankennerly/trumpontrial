@@ -52,9 +52,8 @@ namespace FineGameDesign.Argument
         private void Awake()
         {
             m_Parser.ParseArguments();
-            int numArguments = m_Parser.Arguments.Length;
-            m_ProgressAnimator.SetTotal(numArguments);
-            m_OpponentProgressAnimator.SetTotal(numArguments);
+            m_ProgressAnimator.SetTotal(m_Parser.NumArguments);
+            m_OpponentProgressAnimator.SetTotal(m_Parser.NumArguments);
 
             NextArgument();
         }
@@ -129,7 +128,7 @@ namespace FineGameDesign.Argument
         private void NextArgument()
         {
             m_ArgumentIndex++;
-            if (m_ArgumentIndex >= m_Parser.Arguments.Length)
+            if (m_ArgumentIndex >= m_Parser.NumArguments)
             {
                 m_ArgumentIndex = 0;
             }

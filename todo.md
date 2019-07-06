@@ -21,10 +21,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. If wrong, hear different sound.
 1. Goto progress animator increments when correct.
 1. Wrong answer increments opponent progress bar.
+1. Parser inspector overrides number of arguments.
 
 # TODO
 
-1. [ ] When all trials answered, end game.
+1. [ ] After a number of arguments, end game.
 1. [ ] Results screen shows accuracy and time.
 1. [ ] Title screen: Trump on Trial.
 1. [ ] Options: Start. Uses same dial as trials.
