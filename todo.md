@@ -30,12 +30,12 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Each correct answer increases number of fallacies.
 1. Clamp content when fewer options.
 1. Blue cartoon UI button style.
+1. Blue cartoon UI font: Life is goofy.
+1. Three stars on win meter.
 
 # Nice to have
 
-1. [ ] Blue cartoon UI font: Life is goofy.
-1. [ ] Three stars on win meter.
-1. [ ] When pass star, highlight star.
+1. [ ] When pass star, that color highlights star.
 1. [ ] Short session setting configures 2 trials.
 1. [ ] Settings option on title screen.
 1. [ ] Estimate difficulty of recognizing fallacy.
