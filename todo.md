@@ -37,17 +37,18 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Linear interpolation on progress bar timelines.
 1. Option prompt off tall screen in feedback.
 1. Increase button click height to 80 design pixels.
+1. Remove hammer.
+1. Remove unused option "Sound".
+1. Prompt "I am ready to..."
+1. Scroll touch on left and right of buttons.
+1. Trump as Android icon and round icon.
 
 # Nice to have
 
-1. [ ] Remove hammer.
-1. [ ] Remove unused option "Sound".
-1. [ ] Prompt "I am ready to..."
-1. [ ] Trump as Android icon and round icon.
-1. [ ] Scroll touch on left and right of buttons.
 1. [ ] No assertion of unreceived animation event.
 1. [ ] Clear compiler warnings of unassigned variables.
 1. [ ] On results, Trump says impeached/you're fired.
+1. [ ] Option to link to read intro to fallacies.
 1. [ ] When pass star, that color highlights star.
 1. [ ] If correct, correct icon flies to meter.
 1. [ ] Introduce progress bar with first argument.
