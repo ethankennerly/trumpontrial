@@ -38,7 +38,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 
 # Nice to have
 
-1. [ ] Trim progress fill sprite without stroke.
+1. [ ] Tween option prompt offscreen during feedback.
+1. [ ] Remove hammer.
+1. [ ] Prompt "I am ready to..."
+1. [ ] Trump as Android icon and round icon.
+1. [ ] Scroll touch on left and right of buttons.
 1. [ ] No assertion of unreceived animation event.
 1. [ ] Clear compiler warnings of unassigned variables.
 1. [ ] On results, Trump says impeached/you're fired.
