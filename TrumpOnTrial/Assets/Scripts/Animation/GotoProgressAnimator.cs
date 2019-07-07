@@ -27,8 +27,9 @@ namespace FineGameDesign.Animation
             ProgressAnimator.GotoProgress(m_AnimatedProgress);
         }
 
-        public void SetTotal(float total)
+        public void ResetTotal(float total)
         {
+            m_AnimatedProgress.quantity = 0;
             m_AnimatedProgress.total = total;
             ProgressAnimator.UpdateProgress(ref m_AnimatedProgress);
         }

@@ -166,8 +166,8 @@ namespace FineGameDesign.Argument
 
         private void ConfigureProgress(int numArguments)
         {
-            m_ProgressAnimator.SetTotal(numArguments);
-            m_OpponentProgressAnimator.SetTotal(numArguments);
+            m_ProgressAnimator.ResetTotal(numArguments);
+            m_OpponentProgressAnimator.ResetTotal(numArguments);
         }
 
         public void StartArguments()

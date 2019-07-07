@@ -34,9 +34,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Three stars on win meter.
 1. Identify 3 easy fallacies.
 1. Identify 15 hard fallacies.
+1. Linear interpolation on progress bar timelines.
 
 # Nice to have
 
+1. [ ] Trim progress fill sprite without stroke.
 1. [ ] No assertion of unreceived animation event.
 1. [ ] Clear compiler warnings of unassigned variables.
 1. [ ] On results, Trump says impeached/you're fired.
