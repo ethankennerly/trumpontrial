@@ -29,11 +29,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Options: Start. Uses same dial as trials.
 1. Each correct answer increases number of fallacies.
 1. Clamp content when fewer options.
-1. Blue cartoon button style.
+1. Blue cartoon UI button style.
 
 # Nice to have
 
-1. [ ] Blue cartoon font.
+1. [ ] Blue cartoon UI font: Life is goofy.
 1. [ ] Three stars on win meter.
 1. [ ] When pass star, highlight star.
 1. [ ] Short session setting configures 2 trials.
