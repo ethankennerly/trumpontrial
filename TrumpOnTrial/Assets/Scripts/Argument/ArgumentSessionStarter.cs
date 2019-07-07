@@ -8,7 +8,8 @@ namespace FineGameDesign.Argument
     [Serializable]
     public struct SessionStartUI
     {
-        public Button startButton;
+        public Button startEasyButton;
+        public Button startHardButton;
         public ArgumentViewer argumentViewer;
         public string startUICloseAnimationName;
         internal Animator startUIAnimator;
@@ -22,14 +23,29 @@ namespace FineGameDesign.Argument
 
         private void OnEnable()
         {
-            m_StartUI.startButton.onClick.RemoveListener(Close);
-            m_StartUI.startButton.onClick.AddListener(Close);
+            m_StartUI.startEasyButton.onClick.RemoveListener(StartEasy);
+            m_StartUI.startEasyButton.onClick.AddListener(StartEasy);
+            m_StartUI.startHardButton.onClick.RemoveListener(StartHard);
+            m_StartUI.startHardButton.onClick.AddListener(StartHard);
             m_StartUI.startUIAnimator = GetComponent<Animator>();
         }
 
         private void OnDisable()
         {
-            m_StartUI.startButton.onClick.RemoveListener(Close);
+            m_StartUI.startEasyButton.onClick.RemoveListener(StartEasy);
+            m_StartUI.startHardButton.onClick.RemoveListener(StartHard);
+        }
+
+        private void StartEasy()
+        {
+            m_StartUI.argumentViewer.ConfigureEasy();
+            Close();
+        }
+
+        private void StartHard()
+        {
+            m_StartUI.argumentViewer.ConfigureHard();
+            Close();
         }
 
         private void Close()

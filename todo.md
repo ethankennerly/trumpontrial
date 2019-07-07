@@ -32,25 +32,36 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Blue cartoon UI button style.
 1. Blue cartoon UI font: Life is goofy.
 1. Three stars on win meter.
+1. Identify 3 easy fallacies.
+1. Identify 15 hard fallacies.
 
 # Nice to have
 
+1. [ ] No assertion of unreceived animation event.
+1. [ ] Clear compiler warnings of unassigned variables.
+1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] When pass star, that color highlights star.
-1. [ ] Short session setting configures 2 trials.
-1. [ ] Settings option on title screen.
-1. [ ] Estimate difficulty of recognizing fallacy.
-1. [ ] Slider setting speeds up time scale.
-1. [ ] Hear background music.
+1. [ ] If correct, correct icon flies to meter.
+1. [ ] Introduce progress bar with first argument.
+1. [ ] If wrong, wrong icon flies to meter.
 1. [ ] If correct, animate shuffled text.
 1. [ ] If wrong, animate shuffled text.
+1. [ ] On select, animate hammer.
+1. [ ] On select, animate stamp.
+1. [ ] Gradient over scroll.
+1. [ ] Scroll contents distort as if on a barrel.
+1. [ ] Hear background music.
+1. [ ] Animation shows Manaford, Stone, Trump.
+1. [ ] Progress shows Manaford, Stone, Trump impeached.
+1. [ ] If correct, animate Trump speech shattering.
+1. [ ] Estimate difficulty of recognizing fallacy.
+1. [ ] If wrong, explain fallacy.
+1. [ ] Tap accelerates animator until end of anim.
+1. [ ] Slider setting speeds up time scale.
 1. [ ] At top left, read countdown timer.
 1. [ ] After time up, end game.
 1. [ ] When time almost up, highlight timer.
 1. [ ] Validate correct answer exactly once in options.
-1. [ ] Animation shows Manaford, Stone, Trump.
-1. [ ] If correct, correct icon flies to meter.
-1. [ ] If wrong, wrong icon flies to meter.
-1. [ ] If correct, animate Trump speech shattering.
 1. [ ] If wrong, animate bottom speech shattering.
 1. [ ] Results screen displays time.
 1. [ ] Answer feedback pauses timer.

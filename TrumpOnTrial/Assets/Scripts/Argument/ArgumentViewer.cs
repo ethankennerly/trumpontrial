@@ -16,6 +16,15 @@ namespace FineGameDesign.Argument
         public TMP_Text argumentText;
     }
 
+    [Serializable]
+    public struct ArgumentRange
+    {
+        public int start;
+        public int current;
+        public int end;
+        public int length;
+    }
+
     public sealed class ArgumentViewer : MonoBehaviour
     {
         public delegate void Evaluate(bool correct);
@@ -45,7 +54,7 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private FallacyLister m_FallacyLister;
 
-        private int m_ArgumentIndex = -1;
+        private ArgumentRange m_ArgumentRange;
 
         private bool m_Correct;
 
@@ -69,8 +78,6 @@ namespace FineGameDesign.Argument
         private void Start()
         {
             m_Parser.ParseArguments();
-            m_ProgressAnimator.SetTotal(m_Parser.NumArguments);
-            m_OpponentProgressAnimator.SetTotal(m_Parser.NumArguments);
             
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closedAnimationName);
         }
@@ -118,7 +125,7 @@ namespace FineGameDesign.Argument
 
         private void EvaluateFallacy(string fallacyOptionText)
         {
-            Argument argument = m_Parser.Arguments[m_ArgumentIndex];
+            Argument argument = m_Parser.Arguments[m_ArgumentRange.current];
             m_Correct = fallacyOptionText == argument.correctFallacyOptionText;
 
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closeAnimationName);
@@ -137,8 +144,35 @@ namespace FineGameDesign.Argument
             }
         }
 
+        public void ConfigureEasy()
+        {
+            ConfigureRange(0, 3);
+            ConfigureProgress(m_ArgumentRange.length);
+        }
+
+        public void ConfigureHard()
+        {
+            ConfigureRange(3, 18);
+            ConfigureProgress(m_ArgumentRange.length);
+        }
+
+        private void ConfigureRange(int start, int end)
+        {
+            m_ArgumentRange.start = start;
+            m_ArgumentRange.end = end;
+            m_ArgumentRange.length = end - start;
+            m_ArgumentRange.current = start - 1;
+        }
+
+        private void ConfigureProgress(int numArguments)
+        {
+            m_ProgressAnimator.SetTotal(numArguments);
+            m_OpponentProgressAnimator.SetTotal(numArguments);
+        }
+
         public void StartArguments()
         {
+            m_ArgumentRange.current = m_ArgumentRange.start - 1;
             NextArgument(true);
         }
 
@@ -149,14 +183,14 @@ namespace FineGameDesign.Argument
                 Debug.Log("NextArgument", context: this);
             }
 
-            m_ArgumentIndex++;
-            if (m_ArgumentIndex >= m_Parser.NumArguments)
+            m_ArgumentRange.current++;
+            if (m_ArgumentRange.current >= m_ArgumentRange.end)
             {
                 SessionPerformance.Publish(m_ProgressAnimator.AnimatedProgress);
                 return;
             }
 
-            Argument argument = m_Parser.Arguments[m_ArgumentIndex];
+            Argument argument = m_Parser.Arguments[m_ArgumentRange.current];
             PopulateText(argument, m_ArgumentView);
 
             m_FallacyLister.Adjust(argument.correctFallacyOptionText, m_Correct);

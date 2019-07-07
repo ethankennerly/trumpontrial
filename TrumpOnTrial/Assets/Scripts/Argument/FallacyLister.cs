@@ -35,6 +35,11 @@ namespace FineGameDesign.Argument
 
         private void Start()
         {
+            ParseFallacies();
+        }
+
+        public void ParseFallacies()
+        {
             m_Parser.ParseFallaciesOnce();
 
             Adjust(null, true);
@@ -44,7 +49,7 @@ namespace FineGameDesign.Argument
         {
             AdjustNumDistractors(correct);
             m_Difficulty.requiredFallacyText = requiredFallacyText;
-            PopulateOptions(m_Parser.Fallacies, m_Difficulty);
+            PopulateOptions(m_Parser.Fallacies, ref m_Difficulty);
         }
 
         public void AdjustNumDistractors(bool correct)
@@ -71,7 +76,7 @@ namespace FineGameDesign.Argument
         /// Selects options with required text and distractor fallacies.
         /// Maintains original order of fallacies.
         /// </summary>
-        private void PopulateOptions(Fallacy[] fallacies, OptionDifficulty difficulty)
+        private void PopulateOptions(Fallacy[] fallacies, ref OptionDifficulty difficulty)
         {
             if (difficulty.options == null)
             {

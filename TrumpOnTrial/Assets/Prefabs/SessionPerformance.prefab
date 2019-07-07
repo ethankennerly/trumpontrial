@@ -1591,22 +1591,12 @@ PrefabInstance:
     - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_text
-      value: Replay
+      value: Identify more fallacies
       objectReference: {fileID: 0}
     - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e7becabe2d8e594abe542a29d885ff0, type: 3}

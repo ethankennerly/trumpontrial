@@ -53,6 +53,7 @@ namespace FineGameDesign.Argument
         {
             m_Lister.OnOptionsChanged -= OnOptionsChanged;
             m_Lister.OnOptionsChanged += OnOptionsChanged;
+            m_Lister.ParseFallacies();
             UpdateOptions(m_Lister.Difficulty.options);
         }
 
