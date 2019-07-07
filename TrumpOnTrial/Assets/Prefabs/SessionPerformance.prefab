@@ -1276,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 7865710871502774408, guid: 29f5c43563f48f44f976e34b8f0a0572,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7865710871502774408, guid: 29f5c43563f48f44f976e34b8f0a0572,
         type: 3}
@@ -1312,6 +1312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: (Choose one)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
         type: 3}
@@ -1551,7 +1556,7 @@ PrefabInstance:
     - target: {fileID: 7865710871502774408, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7865710871502774408, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
@@ -1592,6 +1597,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Identify more fallacies
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}

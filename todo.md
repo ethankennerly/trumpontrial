@@ -35,11 +35,13 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Identify 3 easy fallacies.
 1. Identify 15 hard fallacies.
 1. Linear interpolation on progress bar timelines.
+1. Option prompt off tall screen in feedback.
+1. Increase button click height to 80 design pixels.
 
 # Nice to have
 
-1. [ ] Tween option prompt offscreen during feedback.
 1. [ ] Remove hammer.
+1. [ ] Remove unused option "Sound".
 1. [ ] Prompt "I am ready to..."
 1. [ ] Trump as Android icon and round icon.
 1. [ ] Scroll touch on left and right of buttons.
