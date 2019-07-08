@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 
@@ -30,12 +31,17 @@ namespace FineGameDesign.Argument
             ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
         }
 
-        private void ReportLevel(int levelIndex, bool levelComplete)
+        private const string kAnswerKey = "answer";
+
+        private readonly Dictionary<string, object> m_CachedWrongAnswer = new Dictionary<string, object>();
+
+        private void ReportLevel(int levelIndex, bool levelComplete, string answerText)
         {
             AnalyticsResult result;
             if (!levelComplete)
             {
-                result = AnalyticsEvent.LevelFail(levelIndex);
+                m_CachedWrongAnswer[kAnswerKey] = answerText;
+                result = AnalyticsEvent.LevelFail(levelIndex, m_CachedWrongAnswer);
             }
             else
             {

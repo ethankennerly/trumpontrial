@@ -43,12 +43,12 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Scroll touch on left and right of buttons.
 1. Trump as Android icon and round icon.
 1. Event System: Large drag threshold for Android.
+1. Report first interaction event.
+1. Report argument as level complete.
+1. Report argument as level fail with wrong answer.
 
 # Nice to have
 
-1. [ ] Report first interaction event.
-1. [ ] Report argument as level complete/fail.
-1. [ ] Report level fail option index selected.
 1. [ ] No assertion of unreceived animation event.
 1. [ ] Clear compiler warnings of unassigned variables.
 1. [ ] Reference instances only.

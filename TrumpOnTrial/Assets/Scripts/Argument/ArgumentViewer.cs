@@ -27,7 +27,8 @@ namespace FineGameDesign.Argument
 
     public sealed class ArgumentViewer : MonoBehaviour
     {
-        public delegate void Evaluate(int argumentIndex, bool correct);
+        public delegate void Evaluate(
+            int argumentIndex, bool correct, string answerText);
         public static event Evaluate OnEvaluated;
 
         public delegate void PopulateArgument();
@@ -130,11 +131,12 @@ namespace FineGameDesign.Argument
 
             if (OnEvaluated != null)
             {
-                OnEvaluated.Invoke(m_ArgumentRange.current, m_Correct);
+                OnEvaluated.Invoke(
+                    m_ArgumentRange.current, m_Correct, fallacyOptionText);
             }
         }
 
-        private void DisplayFeedback(int argumentIndex, bool correct)
+        private void DisplayFeedback(int argumentIndex, bool correct, string answerText)
         {
             if (m_Feedback == null)
             {
