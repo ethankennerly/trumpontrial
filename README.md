@@ -1,9 +1,9 @@
 # Trump on Trial
 
-TODO: Play on Android or laptop web browser (WebGL): <http://finegamedesign.com/trumpontrial>
+If you like to think, you can play on Android or laptop web browser (WebGL): <http://finegamedesign.com/trumpontrial>
 
-- [credits](credits.md)
-- [todo](todo.md)
+- [Credits](credits.md)
+- [To Do](todo.md)
 
 ## Installation
 

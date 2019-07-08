@@ -27,7 +27,7 @@ namespace FineGameDesign.Argument
 
     public sealed class ArgumentViewer : MonoBehaviour
     {
-        public delegate void Evaluate(bool correct);
+        public delegate void Evaluate(int argumentIndex, bool correct);
         public static event Evaluate OnEvaluated;
 
         public delegate void PopulateArgument();
@@ -96,17 +96,7 @@ namespace FineGameDesign.Argument
 
             if (m_DisplayFeedbackAction == null)
             {
-                m_DisplayFeedbackAction = (bool correct) =>
-                {
-                    if (m_Feedback == null)
-                    {
-                        Debug.Assert(m_Feedback != null,
-                            "Expected feedback defined.",
-                            context: this);
-                        return;
-                    }
-                    m_Feedback.DisplayFeedback(correct);
-                };
+                m_DisplayFeedbackAction = DisplayFeedback;
             }
             OnEvaluated -= m_DisplayFeedbackAction;
             OnEvaluated += m_DisplayFeedbackAction;
@@ -140,8 +130,20 @@ namespace FineGameDesign.Argument
 
             if (OnEvaluated != null)
             {
-                OnEvaluated.Invoke(m_Correct);
+                OnEvaluated.Invoke(m_ArgumentRange.current, m_Correct);
             }
+        }
+
+        private void DisplayFeedback(int argumentIndex, bool correct)
+        {
+            if (m_Feedback == null)
+            {
+                Debug.Assert(m_Feedback != null,
+                    "Expected feedback defined.",
+                    context: this);
+                return;
+            }
+            m_Feedback.DisplayFeedback(correct);
         }
 
         public void ConfigureEasy()

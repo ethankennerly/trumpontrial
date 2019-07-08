@@ -42,11 +42,17 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Prompt "I am ready to..."
 1. Scroll touch on left and right of buttons.
 1. Trump as Android icon and round icon.
+1. Event System: Large drag threshold for Android.
 
 # Nice to have
 
+1. [ ] Report first interaction event.
+1. [ ] Report argument as level complete/fail.
+1. [ ] Report level fail option index selected.
 1. [ ] No assertion of unreceived animation event.
 1. [ ] Clear compiler warnings of unassigned variables.
+1. [ ] Reference instances only.
+1. [ ] Indepedent library classes.
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.
 1. [ ] When pass star, that color highlights star.
