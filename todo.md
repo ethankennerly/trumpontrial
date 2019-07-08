@@ -46,6 +46,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Report first interaction event.
 1. Report argument as level complete.
 1. Report argument as level fail with wrong answer.
+1. Prompt: "(Drag up, then tap one)"
 
 # Nice to have
 

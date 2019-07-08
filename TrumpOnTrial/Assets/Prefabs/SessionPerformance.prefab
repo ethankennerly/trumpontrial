@@ -1308,31 +1308,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
-        type: 3}
-      propertyPath: m_text
-      value: (Choose one)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881355278094628886, guid: 29f5c43563f48f44f976e34b8f0a0572,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29f5c43563f48f44f976e34b8f0a0572, type: 3}
 --- !u!224 &6808880026355984388 stripped
@@ -1493,11 +1468,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReloadSceneButton
       objectReference: {fileID: 0}
-    - target: {fileID: 8498965260246587875, guid: 5e7becabe2d8e594abe542a29d885ff0,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 5551162723391578314}
     - target: {fileID: 7865710871502774408, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1608,6 +1578,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReloadSceneText
       objectReference: {fileID: 0}
+    - target: {fileID: 8498965260246587875, guid: 5e7becabe2d8e594abe542a29d885ff0,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 5551162723391578314}
     - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_text
