@@ -31,8 +31,8 @@ namespace FineGameDesign.Argument
             int argumentIndex, bool correct, string answerText);
         public static event Evaluate OnEvaluated;
 
-        public delegate void PopulateArgument();
-        public static event PopulateArgument OnArgumentPopulated;
+        public delegate void Populate(int argumentIndex);
+        public static event Populate OnPopulated;
 
         [SerializeField]
         private ArgumentParser m_Parser = null;
@@ -201,9 +201,9 @@ namespace FineGameDesign.Argument
 
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.openAnimationName);
 
-            if (OnArgumentPopulated != null)
+            if (OnPopulated != null)
             {
-                OnArgumentPopulated.Invoke();
+                OnPopulated.Invoke(m_ArgumentRange.current);
             }
         }
 

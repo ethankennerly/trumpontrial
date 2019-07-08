@@ -9,7 +9,7 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private ScrollView m_ScrollView;
 
-        private ArgumentViewer.PopulateArgument m_OnArgumentPopulated;
+        private ArgumentViewer.Populate m_OnArgumentPopulated;
 
         private void OnEnable()
         {
@@ -28,17 +28,17 @@ namespace FineGameDesign.Argument
                 m_OnArgumentPopulated = SnapToFirst;
             }
 
-            ArgumentViewer.OnArgumentPopulated -= m_OnArgumentPopulated;
-            ArgumentViewer.OnArgumentPopulated += m_OnArgumentPopulated;
-            m_OnArgumentPopulated();
+            ArgumentViewer.OnPopulated -= m_OnArgumentPopulated;
+            ArgumentViewer.OnPopulated += m_OnArgumentPopulated;
+            m_OnArgumentPopulated(-1);
         }
 
         private void RemoveListener()
         {
-            ArgumentViewer.OnArgumentPopulated -= m_OnArgumentPopulated;
+            ArgumentViewer.OnPopulated -= m_OnArgumentPopulated;
         }
 
-        private void SnapToFirst()
+        private void SnapToFirst(int argumentIndexNotUsed)
         {
             ScrollRectSnapper.SnapToFirst(ref m_ScrollView);
         }

@@ -14,20 +14,36 @@ namespace FineGameDesign.Argument
             {
                 if (m_OnArgumentEvaluated == null)
                 {
-                    m_OnArgumentEvaluated = ReportLevel;
+                    m_OnArgumentEvaluated = ReportLevelEnd;
                 }
                 return m_OnArgumentEvaluated;
             }
         }
 
+        private ArgumentViewer.Populate m_OnArgumentPopulated;
+        private ArgumentViewer.Populate OnArgumentPopulated
+        {
+            get
+            {
+                if (m_OnArgumentPopulated == null)
+                {
+                    m_OnArgumentPopulated = ReportLevelStart;
+                }
+                return m_OnArgumentPopulated;
+            }
+        }
+
         private void OnEnable()
         {
+            ArgumentViewer.OnPopulated -= OnArgumentPopulated;
+            ArgumentViewer.OnPopulated += OnArgumentPopulated;
             ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
             ArgumentViewer.OnEvaluated += OnArgumentEvaluated;
         }
 
         private void OnDisable()
         {
+            ArgumentViewer.OnPopulated -= OnArgumentPopulated;
             ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
         }
 
@@ -35,7 +51,17 @@ namespace FineGameDesign.Argument
 
         private readonly Dictionary<string, object> m_CachedWrongAnswer = new Dictionary<string, object>();
 
-        private void ReportLevel(int levelIndex, bool levelComplete, string answerText)
+        private void ReportLevelStart(int levelIndex)
+        {
+            AnalyticsResult result = AnalyticsEvent.LevelStart(levelIndex, m_CachedWrongAnswer);
+            Debug.Assert(result == AnalyticsResult.Ok,
+                "ReportLevel: result=" + result +
+                " levelIndex=" + levelIndex,
+                context: this
+            );
+        }
+
+        private void ReportLevelEnd(int levelIndex, bool levelComplete, string answerText)
         {
             AnalyticsResult result;
             if (!levelComplete)
@@ -53,16 +79,6 @@ namespace FineGameDesign.Argument
                 " levelComplete=" + levelComplete,
                 context: this
             );
-
-            if (AnalyticsEvent.debugMode)
-            {
-                Debug.Log(
-                    "ReportLevel: result=" + result +
-                    " levelIndex=" + levelIndex +
-                    " levelComplete=" + levelComplete,
-                    context: this
-                );
-            }
         }
     }
 }
