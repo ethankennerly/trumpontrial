@@ -45,9 +45,31 @@ namespace FineGameDesign.Argument
             get { return m_Evaluator; }
         }
 
-        private FallacyOptionViewer.SelectText m_EvaluateFallacyDelegate;
+        private FallacyOptionViewer.SelectText m_OnTextSelected;
+        private FallacyOptionViewer.SelectText OnTextSelected
+        {
+            get
+            {
+                if (m_OnTextSelected == null)
+                {
+                    m_OnTextSelected = m_Evaluator.EvaluateFallacy;
+                }
+                return m_OnTextSelected;
+            }
+        }
 
         private ArgumentEvaluator.Evaluate m_DisplayFeedbackAction;
+        private ArgumentEvaluator.Evaluate DisplayFeedbackAction
+        {
+            get
+            {
+                if (m_DisplayFeedbackAction == null)
+                {
+                    m_DisplayFeedbackAction = DisplayFeedback;
+                }
+                return m_DisplayFeedbackAction;
+            }
+        }
 
         private AnswerFeedbackPublisher.FeedbackComplete m_OnFeedbackComplete;
         private AnswerFeedbackPublisher.FeedbackComplete OnFeedbackComplete
@@ -98,23 +120,15 @@ namespace FineGameDesign.Argument
 
         private void OnEnable()
         {
-            if (m_EvaluateFallacyDelegate == null)
-            {
-                m_EvaluateFallacyDelegate = m_Evaluator.EvaluateFallacy;
-            }
 
-            m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
-            m_OptionViewer.OnTextSelected += m_EvaluateFallacyDelegate;
+            m_OptionViewer.OnTextSelected -= OnTextSelected;
+            m_OptionViewer.OnTextSelected += OnTextSelected;
 
             m_Evaluator.OnPopulated -= OnPopulated;
             m_Evaluator.OnPopulated += OnPopulated;
 
-            if (m_DisplayFeedbackAction == null)
-            {
-                m_DisplayFeedbackAction = DisplayFeedback;
-            }
-            m_Evaluator.OnEvaluated -= m_DisplayFeedbackAction;
-            m_Evaluator.OnEvaluated += m_DisplayFeedbackAction;
+            m_Evaluator.OnEvaluated -= DisplayFeedbackAction;
+            m_Evaluator.OnEvaluated += DisplayFeedbackAction;
 
             m_Evaluator.OnSessionEnded -= OnSessionEnded;
             m_Evaluator.OnSessionEnded += OnSessionEnded;
@@ -125,10 +139,10 @@ namespace FineGameDesign.Argument
 
         private void OnDisable()
         {
-            m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
+            m_OptionViewer.OnTextSelected -= OnTextSelected;
             m_Feedback.OnComplete -= OnFeedbackComplete;
             m_Evaluator.OnPopulated -= OnPopulated;
-            m_Evaluator.OnEvaluated -= m_DisplayFeedbackAction;
+            m_Evaluator.OnEvaluated -= DisplayFeedbackAction;
             m_Evaluator.OnSessionEnded -= OnSessionEnded;
         }
 

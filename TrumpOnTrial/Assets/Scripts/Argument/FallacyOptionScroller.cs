@@ -13,6 +13,18 @@ namespace FineGameDesign.Argument
         private ArgumentViewer m_ArgumentViewer = default;
 
         private ArgumentEvaluator.Populate m_OnArgumentPopulated;
+        private ArgumentEvaluator.Populate OnArgumentPopulated
+        {
+            get
+            {
+                if (m_OnArgumentPopulated == null)
+                {
+                    m_OnArgumentPopulated = SnapToFirst;
+                }
+                return m_OnArgumentPopulated;
+            }
+        }
+
 
         private void OnEnable()
         {
@@ -26,18 +38,13 @@ namespace FineGameDesign.Argument
 
         private void AddListener()
         {
-            if (m_OnArgumentPopulated == null)
-            {
-                m_OnArgumentPopulated = SnapToFirst;
-            }
-
-            m_ArgumentViewer.Evaluator.OnPopulated -= m_OnArgumentPopulated;
-            m_ArgumentViewer.Evaluator.OnPopulated += m_OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated -= OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated += OnArgumentPopulated;
         }
 
         private void RemoveListener()
         {
-            m_ArgumentViewer.Evaluator.OnPopulated -= m_OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated -= OnArgumentPopulated;
         }
 
         private void SnapToFirst(Argument argumentNotUsed, ArgumentRange rangeNotUsed)
