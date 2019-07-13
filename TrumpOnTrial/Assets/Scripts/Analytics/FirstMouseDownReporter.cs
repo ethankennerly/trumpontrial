@@ -4,13 +4,11 @@ using UnityEngine.Analytics;
 namespace FineGameDesign.Analytics
 {
     [HelpURL("https://docs.unity3d.com/Manual/UnityAnalyticsStandardEvents.html")]
-    public sealed class AnalyticsReporter : MonoBehaviour
+    public sealed class FirstMouseDownReporter : MonoBehaviour
     {
-        [Header("Log if DEBUG_ANALYTICS_STANDARD_EVENTS")]
+        [Header("Logs all analytics events.")]
         [SerializeField]
         private bool m_DebugMode = false;
-
-        private bool m_FirstMouseDownReported = false;
 
         private void OnValidate()
         {
@@ -29,19 +27,14 @@ namespace FineGameDesign.Analytics
 
         private void UpdateFirstMouseDown()
         {
-            if (m_FirstMouseDownReported)
-            {
-                return;
-            }
-            
             if (!Input.GetMouseButtonDown(0))
             {
                 return;
             }
 
-            m_FirstMouseDownReported = true;
-
             AnalyticsEvent.FirstInteraction();
+
+            enabled = false;
         }
     }
 }

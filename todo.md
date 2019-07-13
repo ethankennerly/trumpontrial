@@ -59,7 +59,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 
 # Nice to have
 
-1. [ ] Indepedent library classes.
+1. [ ] Indepedent library modules.
+1. [ ] Wrap delegate assignments in a property.
+1. [ ] Test logic of some examples methods.
+1. [ ] Test logic of an answer.
+1. [ ] Test logic of a session.
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.
 1. [ ] When pass star, that color highlights star.

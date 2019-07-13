@@ -32,6 +32,12 @@ namespace FineGameDesign.UI
             m_View.animator.Play(animationName, -1, 0f);
         }
 
+        /// <summary>
+        /// Callable by a Mecanim animation event. Example:
+        /// <a href="../../Assets/Animations/FallacyRecognitionFeedback_CorrectOpen.anim">
+        /// CorrectOpen
+        /// </a>
+        /// </summary>
         public void PublishComplete()
         {
             if (OnComplete == null)
