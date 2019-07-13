@@ -28,17 +28,13 @@ namespace FineGameDesign.Argument
 
         [SerializeField]
         private OptionDifficulty m_Difficulty = default;
-        public OptionDifficulty Difficulty
-        {
-            get { return m_Difficulty; }
-        }
 
         private void Start()
         {
-            ParseFallacies();
+            PopulateFallacies();
         }
 
-        public void ParseFallacies()
+        public void PopulateFallacies()
         {
             m_Parser.ParseFallaciesOnce();
 

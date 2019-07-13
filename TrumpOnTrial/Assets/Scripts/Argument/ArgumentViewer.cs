@@ -122,6 +122,15 @@ namespace FineGameDesign.Argument
             Argument argument = m_Parser.Arguments[m_ArgumentRange.current];
             m_Correct = fallacyOptionText == argument.correctFallacyOptionText;
 
+            if (OnEvaluated != null)
+            {
+                OnEvaluated.Invoke(
+                    m_ArgumentRange.current, m_Correct, fallacyOptionText);
+            }
+        }
+
+        private void DisplayFeedback(int argumentIndex, bool correct, string answerText)
+        {
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closeAnimationName);
             if (m_Correct)
             {
@@ -132,15 +141,6 @@ namespace FineGameDesign.Argument
                 m_OpponentProgressAnimator.AddQuantity(1f);
             }
 
-            if (OnEvaluated != null)
-            {
-                OnEvaluated.Invoke(
-                    m_ArgumentRange.current, m_Correct, fallacyOptionText);
-            }
-        }
-
-        private void DisplayFeedback(int argumentIndex, bool correct, string answerText)
-        {
             if (m_Feedback == null)
             {
                 Debug.Assert(m_Feedback != null,

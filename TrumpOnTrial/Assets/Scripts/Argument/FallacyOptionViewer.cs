@@ -55,7 +55,7 @@ namespace FineGameDesign.Argument
         {
             m_Lister.OnOptionsChanged -= OnOptionsChanged;
             m_Lister.OnOptionsChanged += OnOptionsChanged;
-            m_Lister.ParseFallacies();
+            m_Lister.PopulateFallacies();
         }
 
         private void OnDisable()
