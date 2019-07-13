@@ -51,10 +51,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. No assertion of unreceived animation event.
 1. Clear compiler warnings of [unassigned variables.](warning_c0649_field_is_never_assigned.md)
 1. Argument Viewer logs optional and off by default.
+1. No static non-delegate variables.
 
 # Nice to have
 
-1. [ ] Reference instances only.
+1. [ ] No static delegates.
 1. [ ] Indepedent library classes.
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.

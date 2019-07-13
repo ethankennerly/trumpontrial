@@ -92,7 +92,8 @@ namespace FineGameDesign.Utils
         // 
         // Would be nice when there's more time to generate hashes.
         // 
-        public static string[][] ParseCsv(string text, string fieldDelimiter = ",")
+        public static string[][] ParseCsv(
+            string text, string fieldDelimiter = ",", string lineDelimiter = "\n")
         {
             text = text.Trim();
             string[] lines = Split(text, lineDelimiter);
@@ -107,7 +108,8 @@ namespace FineGameDesign.Utils
             return table;
         }
 
-        public static string[] ParseLines(string text)
+        public static string[] ParseLines(
+            string text, string lineDelimiter = "\n")
         {
             text = text.Trim();
             string[] lines = Split(text, lineDelimiter);

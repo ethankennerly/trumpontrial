@@ -32,13 +32,6 @@ namespace FineGameDesign.Argument
             get { return m_NumArguments; }
         }
 
-        public static ArgumentParser instance;
-
-        private void Awake()
-        {
-            instance = this;
-        }
-
         public void ParseArguments()
         {
             string csvText = m_ArgumentsCsv.text;

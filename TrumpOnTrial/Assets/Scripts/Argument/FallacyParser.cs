@@ -24,13 +24,6 @@ namespace FineGameDesign.Argument
         private int m_NumFallacies;
         private bool m_Parsed;
 
-        public static FallacyParser instance;
-
-        private void Awake()
-        {
-            instance = this;
-        }
-
         public void ParseFallaciesOnce()
         {
             if (m_Parsed)
