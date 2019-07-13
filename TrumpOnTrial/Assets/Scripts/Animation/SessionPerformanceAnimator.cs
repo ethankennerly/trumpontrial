@@ -20,35 +20,17 @@ namespace FineGameDesign.Animation
         [SerializeField]
         private AnimatedProgress m_Results = default;
 
-        private SessionPerformance.Summarize m_OnSummarized;
-        private SessionPerformance.Summarize OnSummarized
-        {
-            get
-            {
-                if (m_OnSummarized == null)
-                {
-                    m_OnSummarized = Display;
-                }
-                return m_OnSummarized;
-            }
-        }
-
         private void OnEnable()
         {
             m_ResultsUI.animator.speed = 0f;
-
-            SessionPerformance.OnSummarized -= OnSummarized;
-            SessionPerformance.OnSummarized += OnSummarized;
         }
 
         private void OnDisable()
         {
             m_ResultsUI.animator.speed = 1f;
-
-            SessionPerformance.OnSummarized -= OnSummarized;
         }
 
-        private void Display(AnimatedProgress results)
+        public void Display(AnimatedProgress results)
         {
             m_Results = results;
             int accuracyPercent = (int)Mathf.Round(100 * results.progress);
@@ -56,20 +38,6 @@ namespace FineGameDesign.Animation
 
             m_ResultsUI.animator.speed = 1f;
             m_ResultsUI.animator.Play(m_ResultsUI.animationName, -1, 0f);
-        }
-    }
-
-    public static class SessionPerformance
-    {
-        public delegate void Summarize(AnimatedProgress results);
-        public static event Summarize OnSummarized;
-
-        public static void Publish(AnimatedProgress results)
-        {
-            if (OnSummarized != null)
-            {
-                OnSummarized.Invoke(results);
-            }
         }
     }
 }

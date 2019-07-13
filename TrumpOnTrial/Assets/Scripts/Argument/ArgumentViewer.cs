@@ -47,6 +47,9 @@ namespace FineGameDesign.Argument
         private AnswerFeedbackPublisher m_Feedback = default;
 
         [SerializeField]
+        private SessionPerformanceAnimator m_SessionPerformance = default;
+
+        [SerializeField]
         private GotoProgressAnimator m_ProgressAnimator = default;
 
         [SerializeField]
@@ -190,7 +193,7 @@ namespace FineGameDesign.Argument
             m_ArgumentRange.current++;
             if (m_ArgumentRange.current >= m_ArgumentRange.end)
             {
-                SessionPerformance.Publish(m_ProgressAnimator.AnimatedProgress);
+                m_SessionPerformance.Display(m_ProgressAnimator.AnimatedProgress);
                 return;
             }
 
