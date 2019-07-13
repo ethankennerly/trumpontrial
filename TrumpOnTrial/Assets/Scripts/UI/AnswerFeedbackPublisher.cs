@@ -16,7 +16,7 @@ namespace FineGameDesign.UI
     {
         public delegate void FeedbackComplete(bool correct);
 
-        public static event FeedbackComplete OnComplete;
+        public event FeedbackComplete OnComplete;
 
         [SerializeField]
         private AnswerFeedbackView m_View = default;

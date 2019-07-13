@@ -103,14 +103,14 @@ namespace FineGameDesign.Argument
             OnEvaluated -= m_DisplayFeedbackAction;
             OnEvaluated += m_DisplayFeedbackAction;
 
-            AnswerFeedbackPublisher.OnComplete -= OnFeedbackComplete;
-            AnswerFeedbackPublisher.OnComplete += OnFeedbackComplete;
+            m_Feedback.OnComplete -= OnFeedbackComplete;
+            m_Feedback.OnComplete += OnFeedbackComplete;
         }
 
         private void OnDisable()
         {
             m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
-            AnswerFeedbackPublisher.OnComplete -= OnFeedbackComplete;
+            m_Feedback.OnComplete -= OnFeedbackComplete;
             OnEvaluated -= m_DisplayFeedbackAction;
         }
 

@@ -54,6 +54,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. No static non-delegate fields.
 1. Argument Viewer: No static fields.
 1. Fallacy Option Viewer: No static fields.
+1. Answer Feedback Publisher: No static fields.
 
 # Nice to have
 
