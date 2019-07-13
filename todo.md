@@ -48,11 +48,12 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Report argument as level complete.
 1. Report argument as level fail with wrong answer.
 1. Prompt: "(Drag up, then tap one)"
+1. No assertion of unreceived animation event.
 
 # Nice to have
 
-1. [ ] No assertion of unreceived animation event.
 1. [ ] Clear compiler warnings of unassigned variables.
+1. [ ] Logs optional.
 1. [ ] Reference instances only.
 1. [ ] Indepedent library classes.
 1. [ ] On results, Trump says impeached/you're fired.
