@@ -24,10 +24,10 @@ namespace FineGameDesign.Argument
         public event Populate OnOptionsChanged;
 
         [SerializeField]
-        private FallacyParser m_Parser;
+        private FallacyParser m_Parser = default;
 
         [SerializeField]
-        private OptionDifficulty m_Difficulty;
+        private OptionDifficulty m_Difficulty = default;
         public OptionDifficulty Difficulty
         {
             get { return m_Difficulty; }

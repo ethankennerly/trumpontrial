@@ -19,7 +19,7 @@ namespace FineGameDesign.Argument
     public sealed class ArgumentSessionStarter : MonoBehaviour
     {
         [SerializeField]
-        private SessionStartUI m_StartUI;
+        private SessionStartUI m_StartUI = default;
 
         private void OnEnable()
         {

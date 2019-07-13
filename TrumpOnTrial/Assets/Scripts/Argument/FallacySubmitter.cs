@@ -17,10 +17,10 @@ namespace FineGameDesign.Argument
         public static event Submit OnSubmitted;
 
         [SerializeField]
-        private SubmitView m_SubmitView;
+        private SubmitView m_SubmitView = default;
 
         [SerializeField]
-        private FallacyOptionViewer m_OptionViewer;
+        private FallacyOptionViewer m_OptionViewer = default;
 
         private string m_FallacyOptionText;
         private float m_ButtonY;

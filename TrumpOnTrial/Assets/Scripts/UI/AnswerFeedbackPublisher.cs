@@ -19,7 +19,7 @@ namespace FineGameDesign.UI
         public static event FeedbackComplete OnComplete;
 
         [SerializeField]
-        private AnswerFeedbackView m_View;
+        private AnswerFeedbackView m_View = default;
 
         public void DisplayFeedback(bool correct)
         {

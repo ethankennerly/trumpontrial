@@ -7,7 +7,7 @@ namespace FineGameDesign.Argument
     public sealed class FallacyParser : MonoBehaviour
     {
         [SerializeField]
-        private TextAsset m_FallaciesCsv;
+        private TextAsset m_FallaciesCsv = default;
 
         [SerializeField]
         private string m_OptionTextColumnName = "optionText";

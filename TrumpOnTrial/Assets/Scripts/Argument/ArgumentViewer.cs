@@ -53,7 +53,7 @@ namespace FineGameDesign.Argument
         private bool m_Verbose = false;
 
         [SerializeField]
-        private FallacyLister m_FallacyLister;
+        private FallacyLister m_FallacyLister = default;
 
         private ArgumentRange m_ArgumentRange;
 

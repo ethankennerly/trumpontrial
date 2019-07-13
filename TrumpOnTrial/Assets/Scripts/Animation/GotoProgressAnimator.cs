@@ -16,7 +16,7 @@ namespace FineGameDesign.Animation
     public sealed class GotoProgressAnimator : MonoBehaviour
     {
         [SerializeField]
-        private AnimatedProgress m_AnimatedProgress;
+        private AnimatedProgress m_AnimatedProgress = default;
         public AnimatedProgress AnimatedProgress
         {
             get { return m_AnimatedProgress; }

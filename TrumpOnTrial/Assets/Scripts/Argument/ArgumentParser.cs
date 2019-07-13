@@ -7,7 +7,7 @@ namespace FineGameDesign.Argument
     public sealed class ArgumentParser : MonoBehaviour
     {
         [SerializeField]
-        private TextAsset m_ArgumentsCsv;
+        private TextAsset m_ArgumentsCsv = default;
 
         [SerializeField]
         private string m_ArgumentTextColumnName = "argumentText";
@@ -26,7 +26,7 @@ namespace FineGameDesign.Argument
         }
 
         [SerializeField]
-        private int m_NumArguments;
+        private int m_NumArguments = default;
         public int NumArguments
         {
             get { return m_NumArguments; }

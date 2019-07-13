@@ -7,7 +7,7 @@ namespace FineGameDesign.Argument
     public sealed class FallacyOptionScroller : MonoBehaviour
     {
         [SerializeField]
-        private ScrollView m_ScrollView;
+        private ScrollView m_ScrollView = default;
 
         private ArgumentViewer.Populate m_OnArgumentPopulated;
 

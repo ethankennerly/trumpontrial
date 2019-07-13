@@ -28,13 +28,13 @@ namespace FineGameDesign.Argument
         public static event FallacySubmitter.Submit OnTextSelected;
 
         [SerializeField]
-        private FallacyLister m_Lister;
+        private FallacyLister m_Lister = default;
 
         [SerializeField]
-        private ContentSize m_ContentSize;
+        private ContentSize m_ContentSize = default;
 
         [SerializeField]
-        private OptionView[] m_OptionViews;
+        private OptionView[] m_OptionViews = default;
 
         private FallacyLister.Populate m_OnOptionsChanged;
         private FallacyLister.Populate OnOptionsChanged

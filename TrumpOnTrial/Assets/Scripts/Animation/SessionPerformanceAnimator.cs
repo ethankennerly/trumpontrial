@@ -15,10 +15,10 @@ namespace FineGameDesign.Animation
     public sealed class SessionPerformanceAnimator : MonoBehaviour
     {
         [SerializeField]
-        private ResultsUI m_ResultsUI;
+        private ResultsUI m_ResultsUI = default;
 
         [SerializeField]
-        private AnimatedProgress m_Results;
+        private AnimatedProgress m_Results = default;
 
         private SessionPerformance.Summarize m_OnSummarized;
         private SessionPerformance.Summarize OnSummarized
