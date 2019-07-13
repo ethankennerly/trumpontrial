@@ -50,10 +50,10 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Prompt: "(Drag up, then tap one)"
 1. No assertion of unreceived animation event.
 1. Clear compiler warnings of [unassigned variables.](warning_c0649_field_is_never_assigned.md)
+1. Argument Viewer logs optional and off by default.
 
 # Nice to have
 
-1. [ ] Logs optional.
 1. [ ] Reference instances only.
 1. [ ] Indepedent library classes.
 1. [ ] On results, Trump says impeached/you're fired.

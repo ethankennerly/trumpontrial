@@ -216,11 +216,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
         type: 3}
-      propertyPath: m_Verbose
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
-        type: 3}
       propertyPath: m_FallacyLister
       value: 
       objectReference: {fileID: 8216747185243663517}
