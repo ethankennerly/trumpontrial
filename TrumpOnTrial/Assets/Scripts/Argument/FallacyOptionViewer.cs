@@ -56,7 +56,6 @@ namespace FineGameDesign.Argument
             m_Lister.OnOptionsChanged -= OnOptionsChanged;
             m_Lister.OnOptionsChanged += OnOptionsChanged;
             m_Lister.ParseFallacies();
-            UpdateOptions(m_Lister.Difficulty.options);
         }
 
         private void OnDisable()
@@ -171,30 +170,6 @@ namespace FineGameDesign.Argument
             }
             
             OnTextSelected.Invoke(selectedText);
-        }
-
-        private Vector3[] m_OptionWorldCornersCorners = new Vector3[4];
-        private OptionView m_OverlappingOption;
-        private float m_OverlappingWorldY;
-
-        public string GetOptionTextOverlappingY(float worldY)
-        {
-            m_OverlappingWorldY = worldY;
-            m_OverlappingOption = default;
-            foreach (OptionView optionView in m_OptionViews)
-            {
-                RectTransform optionRect = optionView.optionRoot.GetComponent<RectTransform>();
-                optionRect.GetWorldCorners(m_OptionWorldCornersCorners);
-                float worldBottom = m_OptionWorldCornersCorners[0].y;
-                float worldTop = m_OptionWorldCornersCorners[1].y;
-                if (worldY < worldBottom || worldY > worldTop)
-                    continue;
-
-                m_OverlappingOption = optionView;
-                return optionView.optionText.text;
-            }
-
-            return null;
         }
     }
 }

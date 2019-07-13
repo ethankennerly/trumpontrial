@@ -54,8 +54,7 @@ namespace FineGameDesign.Argument
         }
 
         /// <remarks>
-        /// Expects <see cref="FineGameDesign.Animation.AnimationEndPublisher"/>
-        /// to send message "OnClosed".
+        /// Expects Mecanim animation to send message "OnClosed".
         /// </remarks>
         public void OnClosed()
         {
