@@ -25,7 +25,9 @@ namespace FineGameDesign.Argument
 
     public sealed class FallacyOptionViewer : MonoBehaviour
     {
-        public event FallacySubmitter.Submit OnTextSelected;
+        public delegate void SelectText(string fallacyOptionText);
+
+        public event SelectText OnTextSelected;
 
         [SerializeField]
         private FallacyLister m_Lister = default;

@@ -62,7 +62,7 @@ namespace FineGameDesign.Argument
 
         private bool m_Correct;
 
-        private FallacySubmitter.Submit m_EvaluateFallacyDelegate;
+        private FallacyOptionViewer.SelectText m_EvaluateFallacyDelegate;
 
         private Evaluate m_DisplayFeedbackAction;
 
@@ -93,8 +93,6 @@ namespace FineGameDesign.Argument
                 m_EvaluateFallacyDelegate = EvaluateFallacy;
             }
 
-            FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
-            FallacySubmitter.OnSubmitted += m_EvaluateFallacyDelegate;
             m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
             m_OptionViewer.OnTextSelected += m_EvaluateFallacyDelegate;
 
@@ -111,7 +109,6 @@ namespace FineGameDesign.Argument
 
         private void OnDisable()
         {
-            FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
             m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
             AnswerFeedbackPublisher.OnComplete -= OnFeedbackComplete;
             OnEvaluated -= m_DisplayFeedbackAction;
