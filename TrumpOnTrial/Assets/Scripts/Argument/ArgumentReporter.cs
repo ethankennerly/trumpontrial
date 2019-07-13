@@ -10,8 +10,8 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private ArgumentViewer m_ArgumentViewer = default;
 
-        private ArgumentViewer.Evaluate m_OnArgumentEvaluated;
-        private ArgumentViewer.Evaluate OnArgumentEvaluated
+        private ArgumentEvaluator.Evaluate m_OnArgumentEvaluated;
+        private ArgumentEvaluator.Evaluate OnArgumentEvaluated
         {
             get
             {
@@ -23,8 +23,8 @@ namespace FineGameDesign.Argument
             }
         }
 
-        private ArgumentViewer.Populate m_OnArgumentPopulated;
-        private ArgumentViewer.Populate OnArgumentPopulated
+        private ArgumentEvaluator.Populate m_OnArgumentPopulated;
+        private ArgumentEvaluator.Populate OnArgumentPopulated
         {
             get
             {
@@ -38,16 +38,16 @@ namespace FineGameDesign.Argument
 
         private void OnEnable()
         {
-            m_ArgumentViewer.OnPopulated -= OnArgumentPopulated;
-            m_ArgumentViewer.OnPopulated += OnArgumentPopulated;
-            m_ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
-            m_ArgumentViewer.OnEvaluated += OnArgumentEvaluated;
+            m_ArgumentViewer.Evaluator.OnPopulated -= OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated += OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnEvaluated -= OnArgumentEvaluated;
+            m_ArgumentViewer.Evaluator.OnEvaluated += OnArgumentEvaluated;
         }
 
         private void OnDisable()
         {
-            m_ArgumentViewer.OnPopulated -= OnArgumentPopulated;
-            m_ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
+            m_ArgumentViewer.Evaluator.OnPopulated -= OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnEvaluated -= OnArgumentEvaluated;
         }
 
         private const string kAnswerKey = "answer";

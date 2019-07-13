@@ -28,6 +28,10 @@ namespace FineGameDesign.Argument
         public event EndSession OnSessionEnded;
 
         private bool m_Correct;
+        public bool Correct
+        {
+            get { return m_Correct; }
+        }
 
         private ArgumentRange m_ArgumentRange;
 
@@ -38,6 +42,11 @@ namespace FineGameDesign.Argument
             set { m_Arguments = value; }
         }
 
+        public Argument CurrentArgument
+        {
+            get { return m_Arguments[m_ArgumentRange.current]; }
+        }
+
         public void ConfigureRange(int start, int end)
         {
             m_ArgumentRange.start = start;
@@ -46,9 +55,15 @@ namespace FineGameDesign.Argument
             m_ArgumentRange.current = start - 1;
         }
 
+        public int NumArgumentsInRange()
+        {
+            return m_ArgumentRange.length;
+        }
+
         public void StartArguments()
         {
             m_ArgumentRange.current = m_ArgumentRange.start - 1;
+            m_Correct = false;
             NextArgument();
         }
 

@@ -56,6 +56,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Option Viewer: No static fields.
 1. Answer Feedback Publisher: No static fields.
 1. Session Performance Animator: No static fields.
+1. Argument Evaluate: Extracts from Argument Viewer.
 
 # Nice to have
 

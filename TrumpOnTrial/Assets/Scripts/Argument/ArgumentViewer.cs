@@ -18,13 +18,6 @@ namespace FineGameDesign.Argument
 
     public sealed class ArgumentViewer : MonoBehaviour
     {
-        public delegate void Evaluate(
-            int argumentIndex, bool correct, string answerText);
-        public event Evaluate OnEvaluated;
-
-        public delegate void Populate(int argumentIndex);
-        public event Populate OnPopulated;
-
         [SerializeField]
         private ArgumentParser m_Parser = default;
 
@@ -47,18 +40,17 @@ namespace FineGameDesign.Argument
         private GotoProgressAnimator m_OpponentProgressAnimator = default;
 
         [SerializeField]
-        private bool m_Verbose = false;
-
-        [SerializeField]
         private FallacyLister m_FallacyLister = default;
 
-        private ArgumentRange m_ArgumentRange;
-
-        private bool m_Correct;
+        private ArgumentEvaluator m_Evaluator = new ArgumentEvaluator();
+        public ArgumentEvaluator Evaluator
+        {
+            get { return m_Evaluator; }
+        }
 
         private FallacyOptionViewer.SelectText m_EvaluateFallacyDelegate;
 
-        private Evaluate m_DisplayFeedbackAction;
+        private ArgumentEvaluator.Evaluate m_DisplayFeedbackAction;
 
         private AnswerFeedbackPublisher.FeedbackComplete m_OnFeedbackComplete;
         private AnswerFeedbackPublisher.FeedbackComplete OnFeedbackComplete
@@ -67,15 +59,42 @@ namespace FineGameDesign.Argument
             {
                 if (m_OnFeedbackComplete == null)
                 {
-                    m_OnFeedbackComplete = NextArgument;
+                    m_OnFeedbackComplete = m_Evaluator.NextArgument;
                 }
                 return m_OnFeedbackComplete;
+            }
+        }
+
+        private ArgumentEvaluator.Populate m_OnPopulated;
+        private ArgumentEvaluator.Populate OnPopulated
+        {
+            get
+            {
+                if (m_OnPopulated == null)
+                {
+                    m_OnPopulated = PopulateArgument;
+                }
+                return m_OnPopulated;
+            }
+        }
+
+        private ArgumentEvaluator.EndSession m_OnSessionEnded;
+        private ArgumentEvaluator.EndSession OnSessionEnded
+        {
+            get
+            {
+                if (m_OnSessionEnded == null)
+                {
+                    m_OnSessionEnded = DisplaySessionPerformance;
+                }
+                return m_OnSessionEnded;
             }
         }
 
         private void Start()
         {
             m_Parser.ParseArguments();
+            m_Evaluator.Arguments = m_Parser.Arguments;
             
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closedAnimationName);
         }
@@ -84,18 +103,24 @@ namespace FineGameDesign.Argument
         {
             if (m_EvaluateFallacyDelegate == null)
             {
-                m_EvaluateFallacyDelegate = EvaluateFallacy;
+                m_EvaluateFallacyDelegate = m_Evaluator.EvaluateFallacy;
             }
 
             m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
             m_OptionViewer.OnTextSelected += m_EvaluateFallacyDelegate;
 
+            m_Evaluator.OnPopulated -= OnPopulated;
+            m_Evaluator.OnPopulated += OnPopulated;
+
             if (m_DisplayFeedbackAction == null)
             {
                 m_DisplayFeedbackAction = DisplayFeedback;
             }
-            OnEvaluated -= m_DisplayFeedbackAction;
-            OnEvaluated += m_DisplayFeedbackAction;
+            m_Evaluator.OnEvaluated -= m_DisplayFeedbackAction;
+            m_Evaluator.OnEvaluated += m_DisplayFeedbackAction;
+
+            m_Evaluator.OnSessionEnded -= OnSessionEnded;
+            m_Evaluator.OnSessionEnded += OnSessionEnded;
 
             m_Feedback.OnComplete -= OnFeedbackComplete;
             m_Feedback.OnComplete += OnFeedbackComplete;
@@ -105,25 +130,15 @@ namespace FineGameDesign.Argument
         {
             m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
             m_Feedback.OnComplete -= OnFeedbackComplete;
-            OnEvaluated -= m_DisplayFeedbackAction;
-        }
-
-        private void EvaluateFallacy(string fallacyOptionText)
-        {
-            Argument argument = m_Parser.Arguments[m_ArgumentRange.current];
-            m_Correct = fallacyOptionText == argument.correctFallacyOptionText;
-
-            if (OnEvaluated != null)
-            {
-                OnEvaluated.Invoke(
-                    m_ArgumentRange.current, m_Correct, fallacyOptionText);
-            }
+            m_Evaluator.OnPopulated -= OnPopulated;
+            m_Evaluator.OnEvaluated -= m_DisplayFeedbackAction;
+            m_Evaluator.OnSessionEnded -= OnSessionEnded;
         }
 
         private void DisplayFeedback(int argumentIndex, bool correct, string answerText)
         {
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closeAnimationName);
-            if (m_Correct)
+            if (correct)
             {
                 m_ProgressAnimator.AddQuantity(1f);
             }
@@ -144,22 +159,14 @@ namespace FineGameDesign.Argument
 
         public void ConfigureEasy()
         {
-            ConfigureRange(0, 3);
-            ConfigureProgress(m_ArgumentRange.length);
+            m_Evaluator.ConfigureRange(0, 3);
+            ConfigureProgress(m_Evaluator.NumArgumentsInRange());
         }
 
         public void ConfigureHard()
         {
-            ConfigureRange(3, 18);
-            ConfigureProgress(m_ArgumentRange.length);
-        }
-
-        private void ConfigureRange(int start, int end)
-        {
-            m_ArgumentRange.start = start;
-            m_ArgumentRange.end = end;
-            m_ArgumentRange.length = end - start;
-            m_ArgumentRange.current = start - 1;
+            m_Evaluator.ConfigureRange(3, 18);
+            ConfigureProgress(m_Evaluator.NumArgumentsInRange());
         }
 
         private void ConfigureProgress(int numArguments)
@@ -170,43 +177,27 @@ namespace FineGameDesign.Argument
 
         public void StartArguments()
         {
-            m_ArgumentRange.current = m_ArgumentRange.start - 1;
-            NextArgument(true);
+            m_Evaluator.StartArguments();
         }
 
-        private void NextArgument(bool correct)
+        private void PopulateArgument(int argumentIndexUnused)
         {
-            if (m_Verbose)
-            {
-                Debug.Log("NextArgument", context: this);
-            }
-
-            m_ArgumentRange.current++;
-            if (m_ArgumentRange.current >= m_ArgumentRange.end)
-            {
-                m_SessionPerformance.Display(m_ProgressAnimator.AnimatedProgress);
-                return;
-            }
-
-            Argument argument = m_Parser.Arguments[m_ArgumentRange.current];
+            Argument argument = m_Evaluator.CurrentArgument;
             PopulateText(argument, m_ArgumentView);
 
-            m_FallacyLister.Adjust(argument.correctFallacyOptionText, m_Correct);
+            m_FallacyLister.Adjust(argument.correctFallacyOptionText, m_Evaluator.Correct);
 
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.openAnimationName);
-
-            if (OnPopulated != null)
-            {
-                OnPopulated.Invoke(m_ArgumentRange.current);
-            }
         }
 
-        /// <summary>
-        /// Copies each text.
-        /// </summary>
         private static void PopulateText(Argument argument, ArgumentView argumentView)
         {
             argumentView.argumentText.text = argument.argumentText;
+        }
+
+        private void DisplaySessionPerformance()
+        {
+            m_SessionPerformance.Display(m_ProgressAnimator.AnimatedProgress);
         }
     }
 }

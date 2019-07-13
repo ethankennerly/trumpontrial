@@ -12,7 +12,7 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private ArgumentViewer m_ArgumentViewer = default;
 
-        private ArgumentViewer.Populate m_OnArgumentPopulated;
+        private ArgumentEvaluator.Populate m_OnArgumentPopulated;
 
         private void OnEnable()
         {
@@ -31,14 +31,14 @@ namespace FineGameDesign.Argument
                 m_OnArgumentPopulated = SnapToFirst;
             }
 
-            m_ArgumentViewer.OnPopulated -= m_OnArgumentPopulated;
-            m_ArgumentViewer.OnPopulated += m_OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated -= m_OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated += m_OnArgumentPopulated;
             m_OnArgumentPopulated(-1);
         }
 
         private void RemoveListener()
         {
-            m_ArgumentViewer.OnPopulated -= m_OnArgumentPopulated;
+            m_ArgumentViewer.Evaluator.OnPopulated -= m_OnArgumentPopulated;
         }
 
         private void SnapToFirst(int argumentIndexNotUsed)

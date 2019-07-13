@@ -14,7 +14,7 @@ namespace FineGameDesign.UI
 
     public sealed class AnswerFeedbackPublisher : MonoBehaviour
     {
-        public delegate void FeedbackComplete(bool correct);
+        public delegate void FeedbackComplete();
 
         public event FeedbackComplete OnComplete;
 
@@ -45,7 +45,7 @@ namespace FineGameDesign.UI
                 return;
             }
 
-            OnComplete.Invoke(m_View.correct);
+            OnComplete.Invoke();
         }
     }
 }
