@@ -591,7 +591,6 @@ GameObject:
   - component: {fileID: 5971920025413096307}
   - component: {fileID: 5971920025413096305}
   - component: {fileID: 5971920025413096306}
-  - component: {fileID: 1266620991678124278}
   m_Layer: 5
   m_Name: FallacyOptionScroller
   m_TagString: Untagged
@@ -659,20 +658,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5971920025413096268}
   m_CullTransparentMesh: 0
---- !u!114 &1266620991678124278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971920025413096268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ac9e828d1958945ba0af0ad2a11bc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ScrollView:
-    scrollRect: {fileID: 5971920025413096305}
 --- !u!1 &5971920025462030401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,6 +1453,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReloadSceneButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8498965260246587875, guid: 5e7becabe2d8e594abe542a29d885ff0,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 5551162723391578314}
     - target: {fileID: 7865710871502774408, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1578,11 +1568,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReloadSceneText
       objectReference: {fileID: 0}
-    - target: {fileID: 8498965260246587875, guid: 5e7becabe2d8e594abe542a29d885ff0,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 5551162723391578314}
     - target: {fileID: 1881355278094628886, guid: 5e7becabe2d8e594abe542a29d885ff0,
         type: 3}
       propertyPath: m_text

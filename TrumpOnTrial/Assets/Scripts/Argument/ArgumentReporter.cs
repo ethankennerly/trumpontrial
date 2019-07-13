@@ -7,6 +7,9 @@ namespace FineGameDesign.Argument
     [HelpURL("https://docs.unity3d.com/Manual/UnityAnalyticsStandardEvents.html")]
     public sealed class ArgumentReporter : MonoBehaviour
     {
+        [SerializeField]
+        private ArgumentViewer m_ArgumentViewer = default;
+
         private ArgumentViewer.Evaluate m_OnArgumentEvaluated;
         private ArgumentViewer.Evaluate OnArgumentEvaluated
         {
@@ -35,16 +38,16 @@ namespace FineGameDesign.Argument
 
         private void OnEnable()
         {
-            ArgumentViewer.OnPopulated -= OnArgumentPopulated;
-            ArgumentViewer.OnPopulated += OnArgumentPopulated;
-            ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
-            ArgumentViewer.OnEvaluated += OnArgumentEvaluated;
+            m_ArgumentViewer.OnPopulated -= OnArgumentPopulated;
+            m_ArgumentViewer.OnPopulated += OnArgumentPopulated;
+            m_ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
+            m_ArgumentViewer.OnEvaluated += OnArgumentEvaluated;
         }
 
         private void OnDisable()
         {
-            ArgumentViewer.OnPopulated -= OnArgumentPopulated;
-            ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
+            m_ArgumentViewer.OnPopulated -= OnArgumentPopulated;
+            m_ArgumentViewer.OnEvaluated -= OnArgumentEvaluated;
         }
 
         private const string kAnswerKey = "answer";

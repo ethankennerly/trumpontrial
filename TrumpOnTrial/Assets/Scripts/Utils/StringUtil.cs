@@ -9,8 +9,6 @@ namespace FineGameDesign.Utils
      */
     public sealed class StringUtil
     {
-        public static string lineDelimiter = "\n";
-
         public static int ParseInt(string digits)
         {
             return int.Parse(digits);

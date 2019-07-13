@@ -29,10 +29,10 @@ namespace FineGameDesign.Argument
     {
         public delegate void Evaluate(
             int argumentIndex, bool correct, string answerText);
-        public static event Evaluate OnEvaluated;
+        public event Evaluate OnEvaluated;
 
         public delegate void Populate(int argumentIndex);
-        public static event Populate OnPopulated;
+        public event Populate OnPopulated;
 
         [SerializeField]
         private ArgumentParser m_Parser = null;
