@@ -16,15 +16,6 @@ namespace FineGameDesign.Argument
         public TMP_Text argumentText;
     }
 
-    [Serializable]
-    public struct ArgumentRange
-    {
-        public int start;
-        public int current;
-        public int end;
-        public int length;
-    }
-
     public sealed class ArgumentViewer : MonoBehaviour
     {
         public delegate void Evaluate(
