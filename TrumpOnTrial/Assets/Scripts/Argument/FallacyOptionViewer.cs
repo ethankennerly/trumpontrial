@@ -30,7 +30,14 @@ namespace FineGameDesign.Argument
         public event SelectText OnTextSelected;
 
         [SerializeField]
+        private FallacyParser m_Parser = default;
+
+        [SerializeField]
         private FallacyLister m_Lister = default;
+        public FallacyLister Lister
+        {
+            get { return m_Lister; }
+        }
 
         [SerializeField]
         private ContentSize m_ContentSize = default;
@@ -55,7 +62,8 @@ namespace FineGameDesign.Argument
         {
             m_Lister.OnOptionsChanged -= OnOptionsChanged;
             m_Lister.OnOptionsChanged += OnOptionsChanged;
-            m_Lister.PopulateFallacies();
+            m_Parser.ParseFallaciesOnce();
+            m_Lister.PopulateFallacies(m_Parser.Fallacies);
         }
 
         private void OnDisable()

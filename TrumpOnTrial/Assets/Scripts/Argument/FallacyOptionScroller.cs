@@ -33,7 +33,6 @@ namespace FineGameDesign.Argument
 
             m_ArgumentViewer.Evaluator.OnPopulated -= m_OnArgumentPopulated;
             m_ArgumentViewer.Evaluator.OnPopulated += m_OnArgumentPopulated;
-            m_OnArgumentPopulated(-1);
         }
 
         private void RemoveListener()
@@ -41,7 +40,7 @@ namespace FineGameDesign.Argument
             m_ArgumentViewer.Evaluator.OnPopulated -= m_OnArgumentPopulated;
         }
 
-        private void SnapToFirst(int argumentIndexNotUsed)
+        private void SnapToFirst(Argument argumentNotUsed, ArgumentRange rangeNotUsed)
         {
             ScrollRectSnapper.SnapToFirst(ref m_ScrollView);
         }

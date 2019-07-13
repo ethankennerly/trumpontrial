@@ -39,9 +39,6 @@ namespace FineGameDesign.Argument
         [SerializeField]
         private GotoProgressAnimator m_OpponentProgressAnimator = default;
 
-        [SerializeField]
-        private FallacyLister m_FallacyLister = default;
-
         private ArgumentEvaluator m_Evaluator = new ArgumentEvaluator();
         public ArgumentEvaluator Evaluator
         {
@@ -135,28 +132,6 @@ namespace FineGameDesign.Argument
             m_Evaluator.OnSessionEnded -= OnSessionEnded;
         }
 
-        private void DisplayFeedback(int argumentIndex, bool correct, string answerText)
-        {
-            m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closeAnimationName);
-            if (correct)
-            {
-                m_ProgressAnimator.AddQuantity(1f);
-            }
-            else
-            {
-                m_OpponentProgressAnimator.AddQuantity(1f);
-            }
-
-            if (m_Feedback == null)
-            {
-                Debug.Assert(m_Feedback != null,
-                    "Expected feedback defined.",
-                    context: this);
-                return;
-            }
-            m_Feedback.DisplayFeedback(correct);
-        }
-
         public void ConfigureEasy()
         {
             m_Evaluator.ConfigureRange(0, 3);
@@ -180,12 +155,9 @@ namespace FineGameDesign.Argument
             m_Evaluator.StartArguments();
         }
 
-        private void PopulateArgument(int argumentIndexUnused)
+        private void PopulateArgument(Argument argument, ArgumentRange rangeNotUsed)
         {
-            Argument argument = m_Evaluator.CurrentArgument;
             PopulateText(argument, m_ArgumentView);
-
-            m_FallacyLister.Adjust(argument.correctFallacyOptionText, m_Evaluator.Correct);
 
             m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.openAnimationName);
         }
@@ -193,6 +165,28 @@ namespace FineGameDesign.Argument
         private static void PopulateText(Argument argument, ArgumentView argumentView)
         {
             argumentView.argumentText.text = argument.argumentText;
+        }
+
+        private void DisplayFeedback(bool correct)
+        {
+            m_ArgumentView.userInterfaceAnimator.Play(m_ArgumentView.closeAnimationName);
+            if (correct)
+            {
+                m_ProgressAnimator.AddQuantity(1f);
+            }
+            else
+            {
+                m_OpponentProgressAnimator.AddQuantity(1f);
+            }
+
+            if (m_Feedback == null)
+            {
+                Debug.Assert(m_Feedback != null,
+                    "Expected feedback defined.",
+                    context: this);
+                return;
+            }
+            m_Feedback.DisplayFeedback(correct);
         }
 
         private void DisplaySessionPerformance()

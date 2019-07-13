@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace FineGameDesign.Argument
 {
@@ -11,41 +8,49 @@ namespace FineGameDesign.Argument
     public struct OptionDifficulty
     {
         public int numDistractors;
+        public int minDistractors;
         public int maxDistractors;
         public int addDistractorsPerCorrect;
         internal bool correct;
         internal string requiredFallacyText;
         internal List<Fallacy> options;
+        internal Fallacy[] fallacies;
     }
 
-    public sealed class FallacyLister : MonoBehaviour
+    [Serializable]
+    public sealed class FallacyLister
     {
         public delegate void Populate(List<Fallacy> fallacies);
         public event Populate OnOptionsChanged;
 
         [SerializeField]
-        private FallacyParser m_Parser = default;
-
-        [SerializeField]
         private OptionDifficulty m_Difficulty = default;
 
-        private void Start()
+        /// <summary>
+        /// Defaults min and max distractors.
+        /// Otherwise, when not set in editor, no distractors.
+        /// </summary>
+        public void PopulateFallacies(Fallacy[] fallacies)
         {
-            PopulateFallacies();
+            m_Difficulty.fallacies = fallacies;
+
+            if (m_Difficulty.minDistractors <= 0)
+            {
+                m_Difficulty.minDistractors = 1;
+            }
+            if (m_Difficulty.maxDistractors <= 0)
+            {
+                m_Difficulty.maxDistractors = fallacies.Length;
+            }
+
+            Adjust(null);
+            AdjustNumDistractors(false);
         }
 
-        public void PopulateFallacies()
+        public void Adjust(string requiredFallacyText)
         {
-            m_Parser.ParseFallaciesOnce();
-
-            Adjust(null, true);
-        }
-
-        public void Adjust(string requiredFallacyText, bool correct)
-        {
-            AdjustNumDistractors(correct);
             m_Difficulty.requiredFallacyText = requiredFallacyText;
-            PopulateOptions(m_Parser.Fallacies, ref m_Difficulty);
+            PopulateOptions(ref m_Difficulty);
         }
 
         public void AdjustNumDistractors(bool correct)
@@ -60,28 +65,31 @@ namespace FineGameDesign.Argument
                 m_Difficulty.numDistractors -= m_Difficulty.addDistractorsPerCorrect;
             }
 
-            if (m_Difficulty.maxDistractors > m_Parser.Fallacies.Length)
+            if (m_Difficulty.maxDistractors > m_Difficulty.fallacies.Length)
             {
-                m_Difficulty.maxDistractors = m_Parser.Fallacies.Length;
+                m_Difficulty.maxDistractors = m_Difficulty.fallacies.Length;
             }
             m_Difficulty.numDistractors = (int)Mathf.Clamp(
-                m_Difficulty.numDistractors, 1, m_Difficulty.maxDistractors);
+                m_Difficulty.numDistractors,
+                m_Difficulty.minDistractors,
+                m_Difficulty.maxDistractors
+            );
         }
 
         /// <summary>
         /// Selects options with required text and distractor fallacies.
         /// Maintains original order of fallacies.
         /// </summary>
-        private void PopulateOptions(Fallacy[] fallacies, ref OptionDifficulty difficulty)
+        private void PopulateOptions(ref OptionDifficulty difficulty)
         {
             if (difficulty.options == null)
             {
-                difficulty.options = new List<Fallacy>(fallacies.Length);
+                difficulty.options = new List<Fallacy>(difficulty.fallacies.Length);
             }
             difficulty.options.Clear();
 
             int numDistractors = 0;
-            foreach (Fallacy fallacy in fallacies)
+            foreach (Fallacy fallacy in difficulty.fallacies)
             {
                 if (difficulty.requiredFallacyText != fallacy.optionText)
                 {

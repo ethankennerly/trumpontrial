@@ -4,6 +4,10 @@ using UnityEngine.Analytics;
 
 namespace FineGameDesign.Argument
 {
+    /// <summary>
+    /// Only reports level index.
+    /// Otherwise, Unity Tech requires a Pro license to access custom data.
+    /// </summary>
     [HelpURL("https://docs.unity3d.com/Manual/UnityAnalyticsStandardEvents.html")]
     public sealed class ArgumentReporter : MonoBehaviour
     {
@@ -50,35 +54,33 @@ namespace FineGameDesign.Argument
             m_ArgumentViewer.Evaluator.OnEvaluated -= OnArgumentEvaluated;
         }
 
-        private const string kAnswerKey = "answer";
+        private int m_LevelIndex;
 
-        private readonly Dictionary<string, object> m_CachedWrongAnswer = new Dictionary<string, object>();
-
-        private void ReportLevelStart(int levelIndex)
+        private void ReportLevelStart(Argument argumentNotUsed, ArgumentRange range)
         {
-            AnalyticsResult result = AnalyticsEvent.LevelStart(levelIndex, m_CachedWrongAnswer);
+            m_LevelIndex = range.current;
+            AnalyticsResult result = AnalyticsEvent.LevelStart(range.current);
             Debug.Assert(result == AnalyticsResult.Ok,
                 "ReportLevel: result=" + result +
-                " levelIndex=" + levelIndex,
+                " levelIndex=" + range.current,
                 context: this
             );
         }
 
-        private void ReportLevelEnd(int levelIndex, bool levelComplete, string answerText)
+        private void ReportLevelEnd(bool levelComplete)
         {
             AnalyticsResult result;
             if (!levelComplete)
             {
-                m_CachedWrongAnswer[kAnswerKey] = answerText;
-                result = AnalyticsEvent.LevelFail(levelIndex, m_CachedWrongAnswer);
+                result = AnalyticsEvent.LevelFail(m_LevelIndex);
             }
             else
             {
-                result = AnalyticsEvent.LevelComplete(levelIndex);
+                result = AnalyticsEvent.LevelComplete(m_LevelIndex);
             }
             Debug.Assert(result == AnalyticsResult.Ok,
                 "ReportLevel: result=" + result +
-                " levelIndex=" + levelIndex +
+                " levelIndex=" + m_LevelIndex +
                 " levelComplete=" + levelComplete,
                 context: this
             );

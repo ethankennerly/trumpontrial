@@ -57,10 +57,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Answer Feedback Publisher: No static fields.
 1. Session Performance Animator: No static fields.
 1. Argument Evaluate: Extracts from Argument Viewer.
+1. Fallacy Lister: Independent of parser.
+1. Distractor Adjuster: Bridges argument and fallacy.
 
 # Nice to have
 
-1. [ ] Indepedent library modules.
 1. [ ] Wrap delegate assignments in a property.
 1. [ ] Test logic of some examples methods.
 1. [ ] Test logic of an answer.

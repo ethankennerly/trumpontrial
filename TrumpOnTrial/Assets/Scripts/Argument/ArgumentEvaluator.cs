@@ -17,21 +17,16 @@ namespace FineGameDesign.Argument
 
     public sealed class ArgumentEvaluator
     {
-        public delegate void Populate(int argumentIndex);
+        public delegate void Populate(Argument argument, ArgumentRange range);
         public event Populate OnPopulated;
 
-        public delegate void Evaluate(
-            int argumentIndex, bool correct, string answerText);
+        public delegate void Evaluate(bool correct);
         public event Evaluate OnEvaluated;
 
         public delegate void EndSession();
         public event EndSession OnSessionEnded;
 
         private bool m_Correct;
-        public bool Correct
-        {
-            get { return m_Correct; }
-        }
 
         private ArgumentRange m_ArgumentRange;
 
@@ -44,7 +39,14 @@ namespace FineGameDesign.Argument
 
         public Argument CurrentArgument
         {
-            get { return m_Arguments[m_ArgumentRange.current]; }
+            get
+            {
+                if (m_ArgumentRange.current >= m_Arguments.Length)
+                {
+                    return default;
+                }
+                return m_Arguments[m_ArgumentRange.current];
+            }
         }
 
         public void ConfigureRange(int start, int end)
@@ -63,7 +65,6 @@ namespace FineGameDesign.Argument
         public void StartArguments()
         {
             m_ArgumentRange.current = m_ArgumentRange.start - 1;
-            m_Correct = false;
             NextArgument();
         }
 
@@ -81,7 +82,7 @@ namespace FineGameDesign.Argument
 
             if (OnPopulated != null)
             {
-                OnPopulated.Invoke(m_ArgumentRange.current);
+                OnPopulated.Invoke(CurrentArgument, m_ArgumentRange);
             }
         }
 
@@ -92,8 +93,7 @@ namespace FineGameDesign.Argument
 
             if (OnEvaluated != null)
             {
-                OnEvaluated.Invoke(
-                    m_ArgumentRange.current, m_Correct, fallacyOptionText);
+                OnEvaluated.Invoke(m_Correct);
             }
         }
     }
