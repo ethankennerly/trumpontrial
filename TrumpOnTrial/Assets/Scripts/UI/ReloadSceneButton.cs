@@ -7,7 +7,7 @@ namespace FineGameDesign.UI
     public sealed class ReloadSceneButton : MonoBehaviour
     {
         [SerializeField]
-        private Button m_ReloadSceneButton = null;
+        private Button m_ReloadSceneButton = default;
 
         private void OnEnable()
         {

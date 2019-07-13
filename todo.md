@@ -53,6 +53,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Argument Viewer logs optional and off by default.
 1. No static non-delegate fields.
 1. Argument Viewer: No static fields.
+1. Fallacy Option Viewer: No static fields.
 
 # Nice to have
 

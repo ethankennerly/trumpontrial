@@ -35,19 +35,22 @@ namespace FineGameDesign.Argument
         public event Populate OnPopulated;
 
         [SerializeField]
-        private ArgumentParser m_Parser = null;
+        private ArgumentParser m_Parser = default;
 
         [SerializeField]
-        private ArgumentView m_ArgumentView = default(ArgumentView);
+        private FallacyOptionViewer m_OptionViewer = default;
 
         [SerializeField]
-        private AnswerFeedbackPublisher m_Feedback = null;
+        private ArgumentView m_ArgumentView = default;
 
         [SerializeField]
-        private GotoProgressAnimator m_ProgressAnimator = null;
+        private AnswerFeedbackPublisher m_Feedback = default;
 
         [SerializeField]
-        private GotoProgressAnimator m_OpponentProgressAnimator = null;
+        private GotoProgressAnimator m_ProgressAnimator = default;
+
+        [SerializeField]
+        private GotoProgressAnimator m_OpponentProgressAnimator = default;
 
         [SerializeField]
         private bool m_Verbose = false;
@@ -92,8 +95,8 @@ namespace FineGameDesign.Argument
 
             FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
             FallacySubmitter.OnSubmitted += m_EvaluateFallacyDelegate;
-            FallacyOptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
-            FallacyOptionViewer.OnTextSelected += m_EvaluateFallacyDelegate;
+            m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
+            m_OptionViewer.OnTextSelected += m_EvaluateFallacyDelegate;
 
             if (m_DisplayFeedbackAction == null)
             {
@@ -109,7 +112,7 @@ namespace FineGameDesign.Argument
         private void OnDisable()
         {
             FallacySubmitter.OnSubmitted -= m_EvaluateFallacyDelegate;
-            FallacyOptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
+            m_OptionViewer.OnTextSelected -= m_EvaluateFallacyDelegate;
             AnswerFeedbackPublisher.OnComplete -= OnFeedbackComplete;
             OnEvaluated -= m_DisplayFeedbackAction;
         }

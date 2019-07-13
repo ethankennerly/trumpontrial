@@ -25,7 +25,7 @@ namespace FineGameDesign.Argument
 
     public sealed class FallacyOptionViewer : MonoBehaviour
     {
-        public static event FallacySubmitter.Submit OnTextSelected;
+        public event FallacySubmitter.Submit OnTextSelected;
 
         [SerializeField]
         private FallacyLister m_Lister = default;
@@ -75,7 +75,7 @@ namespace FineGameDesign.Argument
         ///
         /// Assigns option index and button subscribes to selected event.
         /// </summary>
-        private static void PopulateOptions(
+        private void PopulateOptions(
             List<Fallacy> fallacies,
             OptionView[] optionViews)
         {
@@ -117,7 +117,7 @@ namespace FineGameDesign.Argument
             size.content.sizeDelta = contentSize;
         }
 
-        private static void AddListener(OptionView optionView, string optionText)
+        private void AddListener(OptionView optionView, string optionText)
         {
             if (optionView.onThisSelected == null ||
                 optionView.optionText.text != optionText)
@@ -161,7 +161,7 @@ namespace FineGameDesign.Argument
             optionView.optionButton.onClick.RemoveAllListeners();
         }
 
-        private static void SelectOptionText(string selectedText)
+        private void SelectOptionText(string selectedText)
         {
             if (OnTextSelected == null)
             {
@@ -178,7 +178,7 @@ namespace FineGameDesign.Argument
         public string GetOptionTextOverlappingY(float worldY)
         {
             m_OverlappingWorldY = worldY;
-            m_OverlappingOption = default(OptionView);
+            m_OverlappingOption = default;
             foreach (OptionView optionView in m_OptionViews)
             {
                 RectTransform optionRect = optionView.optionRoot.GetComponent<RectTransform>();
