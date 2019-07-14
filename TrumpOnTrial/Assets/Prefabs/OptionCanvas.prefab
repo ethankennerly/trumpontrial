@@ -424,6 +424,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FallaciesCsv: {fileID: 4900000, guid: a130d8ebe4b9de94db6c78267afb07c1, type: 3}
+  m_Table:
+    optionTextColumnName: optionText
+    numFallacies: 0
+    fallacies: []
   m_OptionTextColumnName: optionText
 --- !u!114 &3505547167633693047
 MonoBehaviour:

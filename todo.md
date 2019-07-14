@@ -65,6 +65,8 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 
 # Nice to have
 
+1. [ ] Fallacy Table: Extracts from parser Behaviour.
+1. [ ] Namespace "Argument" to "FallacyRecognition".
 1. [ ] Argument Evaluator Tests: Evaluate fallacy.
 1. [ ] Test logic of a session.
 1. [ ] On results, Trump says impeached/you're fired.
