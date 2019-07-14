@@ -22,6 +22,19 @@ namespace FineGameDesign.FallacyRecognition
             get { return m_Lister; }
         }
 
+        private ArgumentEvaluator.Populate m_OnPopulated;
+        private ArgumentEvaluator.Populate OnPopulated
+        {
+            get
+            {
+                if (m_OnPopulated == null)
+                {
+                    m_OnPopulated = PopulateFallacyLister;
+                }
+                return m_OnPopulated;
+            }
+        }
+
         private ArgumentEvaluator.Evaluate m_OnEvaluated;
         private ArgumentEvaluator.Evaluate OnEvaluated
         {
@@ -47,13 +60,21 @@ namespace FineGameDesign.FallacyRecognition
 
         private void AddListeners()
         {
+            Evaluator.OnPopulated -= OnPopulated;
+            Evaluator.OnPopulated += OnPopulated;
             Evaluator.OnEvaluated -= OnEvaluated;
             Evaluator.OnEvaluated += OnEvaluated;
         }
 
         private void RemoveListeners()
         {
+            Evaluator.OnPopulated -= OnPopulated;
             Evaluator.OnEvaluated -= OnEvaluated;
+        }
+
+        private void PopulateFallacyLister(Argument argument, ArgumentRange range)
+        {
+            Lister.Adjust(argument.correctFallacyOptionText);
         }
     }
 }

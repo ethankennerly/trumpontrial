@@ -28,6 +28,7 @@ namespace FineGameDesign.FallacyRecognition
         public OptionDifficulty Difficulty
         {
             get { return m_Difficulty; }
+            set { m_Difficulty = value; }
         }
 
         /// <summary>
@@ -47,8 +48,8 @@ namespace FineGameDesign.FallacyRecognition
                 m_Difficulty.maxDistractors = fallacies.Length;
             }
 
-            Adjust(null);
             AdjustNumDistractors(false);
+            Adjust(null);
         }
 
         public void Adjust(string requiredFallacyText)
