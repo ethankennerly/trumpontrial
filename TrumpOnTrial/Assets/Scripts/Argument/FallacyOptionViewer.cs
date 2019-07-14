@@ -1,3 +1,4 @@
+using FineGameDesign.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -39,6 +40,9 @@ namespace FineGameDesign.Argument
         }
 
         [SerializeField]
+        private ScrollView m_ScrollView = default;
+
+        [SerializeField]
         private ContentSize m_ContentSize = default;
 
         [SerializeField]
@@ -75,6 +79,7 @@ namespace FineGameDesign.Argument
         {
             PopulateOptions(fallacies, m_OptionViews);
             ResizeContent(m_ContentSize, fallacies.Count);
+            ScrollRectSnapper.SnapToFirst(ref m_ScrollView);
         }
 
         /// <summary>

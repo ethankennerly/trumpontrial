@@ -168,9 +168,8 @@ GameObject:
   - component: {fileID: 667497824}
   - component: {fileID: 667497826}
   - component: {fileID: 667497825}
-  - component: {fileID: 4860356566299457253}
   m_Layer: 5
-  m_Name: FallacyOptionScroller
+  m_Name: FallacyOptionScroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,21 +235,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667497823}
   m_CullTransparentMesh: 0
---- !u!114 &4860356566299457253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667497823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ac9e828d1958945ba0af0ad2a11bc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ScrollView:
-    scrollRect: {fileID: 667497826}
-  m_ArgumentViewer: {fileID: 0}
 --- !u!1 &804335520
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,8 +441,11 @@ MonoBehaviour:
   m_Lister:
     m_Difficulty:
       numDistractors: 0
+      minDistractors: 0
       maxDistractors: 0
       addDistractorsPerCorrect: 1
+  m_ScrollView:
+    scrollRect: {fileID: 667497826}
   m_ContentSize:
     content: {fileID: 395231730}
     heightPerOption: 80

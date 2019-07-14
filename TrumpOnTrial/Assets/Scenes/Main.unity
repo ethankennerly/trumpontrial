@@ -946,7 +946,13 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7942889880905868170, guid: 8cdcd95c6e9f3eb409f2e0d4a31fd810,
+        type: 3}
+      propertyPath: m_Name
+      value: FallacyOptionScroll
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3263320587912437808, guid: 8cdcd95c6e9f3eb409f2e0d4a31fd810, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8cdcd95c6e9f3eb409f2e0d4a31fd810, type: 3}
 --- !u!1001 &4511032291017376597
 PrefabInstance:

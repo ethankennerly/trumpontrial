@@ -59,10 +59,10 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Argument Evaluate: Extracts from Argument Viewer.
 1. Fallacy Lister: Independent of parser.
 1. Distractor Adjuster: Bridges argument and fallacy.
+1. Argument/Fallacy: Wraps delegate assignments.
 
 # Nice to have
 
-1. [ ] Wrap delegate assignments in a property.
 1. [ ] Test logic of some examples methods.
 1. [ ] Test logic of an answer.
 1. [ ] Test logic of a session.
