@@ -60,11 +60,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Lister: Independent of parser.
 1. Distractor Adjuster: Bridges argument and fallacy.
 1. Argument/Fallacy: Wraps delegate assignments.
+1. Argument Table Tests: Parses tiny CSV.
 
 # Nice to have
 
-1. [ ] Test logic of some examples methods.
-1. [ ] Test logic of an answer.
+1. [ ] Argument Evaluator Tests: Evaluate fallacy.
 1. [ ] Test logic of a session.
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.

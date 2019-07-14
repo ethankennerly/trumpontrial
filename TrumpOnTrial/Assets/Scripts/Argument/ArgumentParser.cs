@@ -10,6 +10,9 @@ namespace FineGameDesign.Argument
         private TextAsset m_ArgumentsCsv = default;
 
         [SerializeField]
+        private ArgumentsTable m_Table;
+
+        [SerializeField]
         private string m_ArgumentTextColumnName = "argumentText";
         private int m_ArgumentTextColumn;
 
@@ -25,7 +28,6 @@ namespace FineGameDesign.Argument
             get { return m_Arguments; }
         }
 
-        [SerializeField]
         private int m_NumArguments = default;
         public int NumArguments
         {
@@ -34,6 +36,8 @@ namespace FineGameDesign.Argument
 
         public void ParseArguments()
         {
+            m_Table.ParseCsv(m_ArgumentsCsv.text); // TODO
+
             string csvText = m_ArgumentsCsv.text;
             
             m_ArgumentsTable = StringUtil.ParseCsv(csvText, "\t");
@@ -56,6 +60,56 @@ namespace FineGameDesign.Argument
                 argument.argumentText = argumentText;
                 argument.correctFallacyOptionText = correctFallacyOptionText;
                 m_Arguments[index] = argument;
+            }
+        }
+    }
+
+    [Serializable]
+    public struct ArgumentsTable
+    {
+        public string argumentTextColumnName;
+        private int argumentTextColumn;
+
+        public string correctFallacyOptionTextColumnName;
+        private int correctFallacyOptionTextColumn;
+
+        public int numArguments;
+        public Argument[] arguments;
+        private string[][] argumentsTable;
+        private string csvText;
+
+        public void ParseCsv(string csvText, string delimiter = "\t")
+        {
+            this.csvText = csvText;
+            
+            argumentsTable = StringUtil.ParseCsv(csvText, delimiter);
+            numArguments = argumentsTable.Length - 1;
+            arguments = new Argument[numArguments];
+            string[] header = argumentsTable[0];
+            argumentTextColumn = Array.IndexOf(header, argumentTextColumnName);
+            correctFallacyOptionTextColumn = Array.IndexOf(header, correctFallacyOptionTextColumnName);
+            Debug.Assert(
+                argumentTextColumn >= 0 && correctFallacyOptionTextColumn >= 0,
+                "ArgumentsTable.Parse: header[0]=" + header[0]
+            );
+            for (int index = 0; index < numArguments; ++index)
+            {
+                int rowIndex = index + 1;
+                string[] row = argumentsTable[rowIndex];
+                if (argumentTextColumn >= row.Length)
+                {
+                    throw new InvalidOperationException("Not enough columns in row index " + index);
+                }
+                string argumentText = row[argumentTextColumn];
+                if (correctFallacyOptionTextColumn >= row.Length)
+                {
+                    throw new InvalidOperationException("Not enough columns in row index " + index);
+                }
+                string correctFallacyOptionText = row[correctFallacyOptionTextColumn];
+                var argument = new Argument();
+                argument.argumentText = argumentText;
+                argument.correctFallacyOptionText = correctFallacyOptionText;
+                arguments[index] = argument;
             }
         }
     }
