@@ -70,6 +70,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Parser Tests: Parses from prefab.
 1. Argument Parser Tests: Parses from prefab.
 1. Fallacy Recognition Session Tests: Setup.
+1. Fallacies: Doubles length of option text.
 
 # Nice to have
 
