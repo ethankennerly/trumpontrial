@@ -13,8 +13,8 @@ namespace FineGameDesign.Tests.FallacyRecognition
         {
             FallacyRecognitionSession session = new FallacyRecognitionSession();
             session.Init();
-            session.Evaluator.Arguments = ArgumentsTableTests.ParseArgumentsFromPrefab();
-            session.Lister.PopulateFallacies(FallaciesTableTests.ParseFallaciesFromPrefab());
+            session.Evaluator.Arguments = ArgumentParserTests.ParseFromPrefab();
+            session.Lister.PopulateFallacies(FallacyParserTests.ParseFromPrefab());
             SetupOnEvaluatedPopulateNextArgument(session);
             session.Evaluator.ConfigureRange(0, 2);
             session.Evaluator.StartArguments();
