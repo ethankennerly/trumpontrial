@@ -62,10 +62,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Argument/Fallacy: Wraps delegate assignments.
 1. Arguments Table Tests: Parses tiny CSV.
 1. Arguments Table: Extracts from parser Behaviour.
+1. Fallacies Table: Extracts from parser Behaviour.
+1. Arguments / Fallacies Tables: Caches parsing.
 
 # Nice to have
 
-1. [ ] Fallacy Table: Extracts from parser Behaviour.
 1. [ ] Namespace "Argument" to "FallacyRecognition".
 1. [ ] Argument Evaluator Tests: Evaluate fallacy.
 1. [ ] Test logic of a session.

@@ -30,7 +30,7 @@ namespace FineGameDesign.Tests.Argument
         }
 
         [Test]
-        public static void ParseCsv_Caches_Parsing()
+        public static void ParseCsv_EqualText_CachesNumParses()
         {
             FallaciesTable oTable = new FallaciesTable();
             oTable.optionTextColumnName = "O";

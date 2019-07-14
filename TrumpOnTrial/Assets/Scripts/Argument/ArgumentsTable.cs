@@ -22,8 +22,22 @@ namespace FineGameDesign.Argument
         private string[][] argumentsTable;
         private string csvText;
 
+        private int numParses;
+        public int NumParses
+        {
+            get { return numParses; }
+        }
+
         public void ParseCsv(string csvText, string delimiter = "\t")
         {
+            if (numParses > 0)
+            {
+                if (this.csvText == csvText)
+                {
+                    return;
+                }
+            }
+            numParses++;
             this.csvText = csvText;
             
             argumentsTable = StringUtil.ParseCsv(csvText, delimiter);

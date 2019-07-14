@@ -35,7 +35,6 @@ namespace FineGameDesign.Argument
                 }
             }
             numParses++;
-
             this.csvText = csvText;
             
             fallaciesTable = StringUtil.ParseCsv(csvText, delimiter);
