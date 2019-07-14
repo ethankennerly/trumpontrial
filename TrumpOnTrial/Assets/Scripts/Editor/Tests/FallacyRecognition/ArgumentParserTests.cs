@@ -9,8 +9,12 @@ namespace FineGameDesign.Tests.FallacyRecognition
     {
         public static Argument[] ParseFromPrefab()
         {
-            Debug.LogWarning("ParseFromPrefab: TODO");
-            return ArgumentsTableTests.AssertOneArgumentTableColumnsNamedAC().arguments;
+            UnityEngine.Object prefab = AssetDatabase.LoadMainAssetAtPath(
+                "Assets/Prefabs/ArgumentParser.prefab");
+            GameObject parserObject = (GameObject)UnityEngine.Object.Instantiate(prefab);
+            ArgumentParser parser = parserObject.GetComponent<ArgumentParser>();
+            parser.ParseArguments();
+            return parser.Arguments;
         }
     }
 }

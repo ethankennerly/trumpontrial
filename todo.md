@@ -68,10 +68,10 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Argument Evaluator Tests: Evaluates fallacy.
 1. Fallacy Recognition Session Tests: Stubs.
 1. Fallacy Parser Tests: Parses from prefab.
+1. Argument Parser Tests: Parses from prefab.
 
 # Nice to have
 
-1. [ ] Argument Parser Tests: Parses from prefab.
 1. [ ] Fallacy Recognition Session Tests: 2 args.
 1. [ ] Fallacy Recognition Session Tests: All args.
 1. [ ] Fallacy Recognition Session: Integrates.
