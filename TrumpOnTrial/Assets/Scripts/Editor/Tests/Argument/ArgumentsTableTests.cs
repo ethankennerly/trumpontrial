@@ -1,10 +1,7 @@
-using FineGameDesign.Argument;
+using FineGameDesign.FallacyRecognition;
 using NUnit.Framework;
 
-// Disambiguates struct from namespace.
-using ArgRow = FineGameDesign.Argument.Argument;
-
-namespace FineGameDesign.Tests.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     public static class ArgumentsTableTests
     {
@@ -24,9 +21,9 @@ namespace FineGameDesign.Tests.Argument
             string expectedCorrectFallacyOptionText)
         {
             table.ParseCsv(csvText);
-            ArgRow[] expectedArguments = new ArgRow[1]
+            Argument[] expectedArguments = new Argument[1]
             {
-                new ArgRow()
+                new Argument()
                 {
                     argumentText = expectedArgumentText,
                     correctFallacyOptionText = expectedCorrectFallacyOptionText

@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     [Serializable]
     public struct SessionStartUI

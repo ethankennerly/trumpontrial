@@ -1,12 +1,12 @@
 using FineGameDesign.Utils;
 using System;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     /// <summary>
     /// Parses CSV into arguments.
     /// Tests:
-    /// <see cref="FineGameDesign.Tests.Argument.ArgumentsTable"/>
+    /// <see cref="FineGameDesign.FallacyRecognition.ArgumentsTable"/>
     /// </summary>
     [Serializable]
     public struct ArgumentsTable

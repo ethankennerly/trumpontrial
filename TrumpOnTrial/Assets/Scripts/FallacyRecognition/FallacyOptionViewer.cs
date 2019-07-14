@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     [Serializable]
     public struct OptionView

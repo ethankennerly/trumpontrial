@@ -64,10 +64,10 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Arguments Table: Extracts from parser Behaviour.
 1. Fallacies Table: Extracts from parser Behaviour.
 1. Arguments / Fallacies Tables: Caches parsing.
+1. Namespace "Argument" to "FallacyRecognition".
 
 # Nice to have
 
-1. [ ] Namespace "Argument" to "FallacyRecognition".
 1. [ ] Argument Evaluator Tests: Evaluate fallacy.
 1. [ ] Test logic of a session.
 1. [ ] On results, Trump says impeached/you're fired.

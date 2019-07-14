@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     [Serializable]
     public struct OptionDifficulty

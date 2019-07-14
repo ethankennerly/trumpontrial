@@ -1,12 +1,12 @@
 using FineGameDesign.Utils;
 using System;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     /// <summary>
     /// Parses CSV into fallacies.
     /// Tests:
-    /// <see cref="FineGameDesign.Tests.Argument.FallaciesTable"/>
+    /// <see cref="FineGameDesign.FallacyRecognition.FallaciesTable"/>
     /// </summary>
     [Serializable]
     public struct FallaciesTable

@@ -2,7 +2,7 @@ using FineGameDesign.Utils;
 using System;
 using UnityEngine;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     /// <summary>
     /// Humble wrapper of argument table.

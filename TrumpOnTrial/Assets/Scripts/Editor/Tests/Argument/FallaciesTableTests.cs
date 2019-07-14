@@ -1,7 +1,7 @@
-using FineGameDesign.Argument;
+using FineGameDesign.FallacyRecognition;
 using NUnit.Framework;
 
-namespace FineGameDesign.Tests.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     public static class FallaciesTableTests
     {

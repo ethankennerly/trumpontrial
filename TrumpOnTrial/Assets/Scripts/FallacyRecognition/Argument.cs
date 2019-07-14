@@ -1,6 +1,6 @@
 using System;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     [Serializable]
     public struct Argument

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FineGameDesign.Argument
+namespace FineGameDesign.FallacyRecognition
 {
     [Serializable]
     public struct ArgumentFallacyBridge
