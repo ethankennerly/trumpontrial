@@ -13,6 +13,7 @@ namespace FineGameDesign.FallacyRecognition
         public int current;
         public int end;
         public int length;
+        public bool ended;
     }
 
     /// <summary>
@@ -34,6 +35,10 @@ namespace FineGameDesign.FallacyRecognition
         private bool m_Correct;
 
         private ArgumentRange m_ArgumentRange;
+        public ArgumentRange Range
+        {
+            get { return m_ArgumentRange; }
+        }
 
         private Argument[] m_Arguments;
         public Argument[] Arguments
@@ -70,13 +75,15 @@ namespace FineGameDesign.FallacyRecognition
         public void StartArguments()
         {
             m_ArgumentRange.current = m_ArgumentRange.start - 1;
+            m_ArgumentRange.ended = false;
             NextArgument();
         }
 
         public void NextArgument()
         {
             m_ArgumentRange.current++;
-            if (m_ArgumentRange.current >= m_ArgumentRange.end)
+            m_ArgumentRange.ended = m_ArgumentRange.current >= m_ArgumentRange.end;
+            if (m_ArgumentRange.ended)
             {
                 if (OnSessionEnded != null)
                 {

@@ -77,6 +77,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. [ ] Argument Fallacy Bridge Tests: Renames.
 1. [ ] Argument Fallacy Bridge Tests: All args.
 1. [ ] Argument Fallacy Bridge: Integrates.
+1. [ ] How can Rob clearly recognize a fallacy?
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.
 1. [ ] When pass star, that color highlights star.

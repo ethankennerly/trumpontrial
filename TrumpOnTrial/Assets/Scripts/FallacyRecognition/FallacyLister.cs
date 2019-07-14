@@ -11,9 +11,9 @@ namespace FineGameDesign.FallacyRecognition
         public int minDistractors;
         public int maxDistractors;
         public int addDistractorsPerCorrect;
+        public string requiredFallacyText;
+        public List<Fallacy> options;
         internal bool correct;
-        internal string requiredFallacyText;
-        internal List<Fallacy> options;
         internal Fallacy[] fallacies;
     }
 
@@ -25,6 +25,10 @@ namespace FineGameDesign.FallacyRecognition
 
         [SerializeField]
         private OptionDifficulty m_Difficulty = default;
+        public OptionDifficulty Difficulty
+        {
+            get { return m_Difficulty; }
+        }
 
         /// <summary>
         /// Defaults min and max distractors.
