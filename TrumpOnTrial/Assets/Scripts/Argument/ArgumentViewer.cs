@@ -22,9 +22,6 @@ namespace FineGameDesign.Argument
         private ArgumentParser m_Parser = default;
 
         [SerializeField]
-        private FallacyOptionViewer m_OptionViewer = default;
-
-        [SerializeField]
         private ArgumentView m_ArgumentView = default;
 
         [SerializeField]
@@ -43,19 +40,6 @@ namespace FineGameDesign.Argument
         public ArgumentEvaluator Evaluator
         {
             get { return m_Evaluator; }
-        }
-
-        private FallacyOptionViewer.SelectText m_OnTextSelected;
-        private FallacyOptionViewer.SelectText OnTextSelected
-        {
-            get
-            {
-                if (m_OnTextSelected == null)
-                {
-                    m_OnTextSelected = m_Evaluator.EvaluateFallacy;
-                }
-                return m_OnTextSelected;
-            }
         }
 
         private ArgumentEvaluator.Evaluate m_DisplayFeedbackAction;
@@ -120,10 +104,6 @@ namespace FineGameDesign.Argument
 
         private void OnEnable()
         {
-
-            m_OptionViewer.OnTextSelected -= OnTextSelected;
-            m_OptionViewer.OnTextSelected += OnTextSelected;
-
             m_Evaluator.OnPopulated -= OnPopulated;
             m_Evaluator.OnPopulated += OnPopulated;
 
@@ -139,7 +119,6 @@ namespace FineGameDesign.Argument
 
         private void OnDisable()
         {
-            m_OptionViewer.OnTextSelected -= OnTextSelected;
             m_Feedback.OnComplete -= OnFeedbackComplete;
             m_Evaluator.OnPopulated -= OnPopulated;
             m_Evaluator.OnEvaluated -= DisplayFeedbackAction;

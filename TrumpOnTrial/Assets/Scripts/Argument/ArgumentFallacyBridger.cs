@@ -10,7 +10,7 @@ namespace FineGameDesign.Argument
         public FallacyOptionViewer optionViewer;
     }
 
-    public sealed class DistractorAdjuster : MonoBehaviour
+    public sealed class ArgumentFallacyBridger : MonoBehaviour
     {
         [SerializeField]
         private ArgumentFallacyBridge m_Bridge = default;
@@ -54,18 +54,36 @@ namespace FineGameDesign.Argument
             }
         }
 
+        private FallacyOptionViewer.SelectText m_OnTextSelected;
+        private FallacyOptionViewer.SelectText OnTextSelected
+        {
+            get
+            {
+                if (m_OnTextSelected == null)
+                {
+                    m_OnTextSelected = Evaluator.EvaluateFallacy;
+                }
+                return m_OnTextSelected;
+            }
+        }
+
         private void OnEnable()
         {
             Evaluator.OnPopulated -= OnPopulated;
             Evaluator.OnPopulated += OnPopulated;
             Evaluator.OnEvaluated -= OnEvaluated;
             Evaluator.OnEvaluated += OnEvaluated;
+
+            m_Bridge.optionViewer.OnTextSelected -= OnTextSelected;
+            m_Bridge.optionViewer.OnTextSelected += OnTextSelected;
         }
 
         private void OnDisable()
         {
             Evaluator.OnEvaluated -= OnEvaluated;
             Evaluator.OnPopulated -= OnPopulated;
+
+            m_Bridge.optionViewer.OnTextSelected -= OnTextSelected;
         }
 
         private void PopulateFallacyLister(Argument argument, ArgumentRange range)
