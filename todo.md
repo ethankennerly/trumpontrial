@@ -69,12 +69,13 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Recognition Session Tests: Stubs.
 1. Fallacy Parser Tests: Parses from prefab.
 1. Argument Parser Tests: Parses from prefab.
+1. Fallacy Recognition Session Tests: Setup.
 
 # Nice to have
 
-1. [ ] Fallacy Recognition Session Tests: 2 args.
-1. [ ] Fallacy Recognition Session Tests: All args.
-1. [ ] Fallacy Recognition Session: Integrates.
+1. [ ] Argument Fallacy Bridge Tests: Renames.
+1. [ ] Argument Fallacy Bridge Tests: All args.
+1. [ ] Argument Fallacy Bridge: Integrates.
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.
 1. [ ] When pass star, that color highlights star.

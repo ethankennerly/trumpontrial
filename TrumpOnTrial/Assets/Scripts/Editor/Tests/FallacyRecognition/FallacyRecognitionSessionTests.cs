@@ -12,10 +12,9 @@ namespace FineGameDesign.Tests.FallacyRecognition
         public static void TODO_Answer_TwoArguments_EndsSession()
         {
             FallacyRecognitionSession session = new FallacyRecognitionSession();
-            session.Init();
             session.Evaluator.Arguments = ArgumentParserTests.ParseFromPrefab();
             session.Lister.PopulateFallacies(FallacyParserTests.ParseFromPrefab());
-            SetupOnEvaluatedPopulateNextArgument(session);
+            AddOnOptionsChangedNextArgument(session);
             session.Evaluator.ConfigureRange(0, 2);
             session.Evaluator.StartArguments();
             AssertAnswerCorrectIncrementsNumDistractors(session);
@@ -25,9 +24,12 @@ namespace FineGameDesign.Tests.FallacyRecognition
             Assert.AreEqual("Tests implemented", "TODO");
         }
 
-        private static void SetupOnEvaluatedPopulateNextArgument(FallacyRecognitionSession session)
+        private static void AddOnOptionsChangedNextArgument(FallacyRecognitionSession session)
         {
-            Debug.LogWarning("SetupOnEvaluatedPopulateNextArgument: TODO");
+            session.Lister.OnOptionsChanged += (fallaciesNotUsed) =>
+            {
+                session.Evaluator.NextArgument();
+            };
         }
 
         private static void AssertAnswerCorrectIncrementsNumDistractors(FallacyRecognitionSession session)

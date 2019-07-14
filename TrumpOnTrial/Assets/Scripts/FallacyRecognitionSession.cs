@@ -8,24 +8,52 @@ namespace FineGameDesign.FallacyRecognition
     /// <see cref="FineGameDesign.Tests.FallacyRecognition.FallacyRecognitionSessionTests"/>
     /// </summary>
     [Serializable]
-    public struct FallacyRecognitionSession
+    public sealed class FallacyRecognitionSession
     {
-        private ArgumentEvaluator m_Evaluator;
+        private ArgumentEvaluator m_Evaluator = new ArgumentEvaluator();
         public ArgumentEvaluator Evaluator
         {
             get { return m_Evaluator; }
         }
 
-        private FallacyLister m_Lister;
+        private FallacyLister m_Lister = new FallacyLister();
         public FallacyLister Lister
         {
             get { return m_Lister; }
         }
 
-        public void Init()
+        private ArgumentEvaluator.Evaluate m_OnEvaluated;
+        private ArgumentEvaluator.Evaluate OnEvaluated
         {
-            m_Evaluator = new ArgumentEvaluator();
-            m_Lister = new FallacyLister();
+            get
+            {
+                if (m_OnEvaluated == null)
+                {
+                    m_OnEvaluated = m_Lister.AdjustNumDistractors;
+                }
+                return m_OnEvaluated;
+            }
+        }
+
+        public FallacyRecognitionSession()
+        {
+            AddListeners();
+        }
+
+        ~FallacyRecognitionSession()
+        {
+            RemoveListeners();
+        }
+
+        private void AddListeners()
+        {
+            Evaluator.OnEvaluated -= OnEvaluated;
+            Evaluator.OnEvaluated += OnEvaluated;
+        }
+
+        private void RemoveListeners()
+        {
+            Evaluator.OnEvaluated -= OnEvaluated;
         }
     }
 }
