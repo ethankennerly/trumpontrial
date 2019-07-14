@@ -1,6 +1,8 @@
 using FineGameDesign.FallacyRecognition;
 using NUnit.Framework;
 
+using Debug = UnityEngine.Debug;
+
 namespace FineGameDesign.Tests.FallacyRecognition
 {
     public static class ArgumentsTableTests
@@ -13,6 +15,12 @@ namespace FineGameDesign.Tests.FallacyRecognition
 
             AssertOneArgument(ref acTable, "A\tC\nA1\tC1", "A1", "C1");
             return acTable;
+        }
+
+        public static Argument[] ParseArgumentsFromPrefab()
+        {
+            Debug.LogWarning("ParseArgumentsFromPrefab: TODO");
+            return AssertOneArgumentTableColumnsNamedAC().arguments;
         }
 
         [Test]

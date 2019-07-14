@@ -66,10 +66,13 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Arguments / Fallacies Tables: Caches parsing.
 1. Namespace "Argument" to "FallacyRecognition".
 1. Argument Evaluator Tests: Evaluates fallacy.
+1. Fallacy Recognition Session Tests: Stubs.
 
 # Nice to have
 
-1. [ ] Test logic of a session.
+1. [ ] Fallacy Recognition Session Tests: 2 args.
+1. [ ] Fallacy Recognition Session Tests: All args.
+1. [ ] Fallacy Recognition Session: Integrates.
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.
 1. [ ] When pass star, that color highlights star.

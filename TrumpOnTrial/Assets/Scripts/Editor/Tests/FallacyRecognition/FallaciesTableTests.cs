@@ -1,10 +1,23 @@
 using FineGameDesign.FallacyRecognition;
 using NUnit.Framework;
 
+using Debug = UnityEngine.Debug;
+
 namespace FineGameDesign.Tests.FallacyRecognition
 {
     public static class FallaciesTableTests
     {
+        public static Fallacy[] ParseFallaciesFromPrefab()
+        {
+            Debug.LogWarning("ParseFallaciesFromPrefab: TODO");
+            FallaciesTable oTable = new FallaciesTable();
+            oTable.optionTextColumnName = "O";
+
+            AssertOneFallacy(ref oTable, "O\nO1", "O1");
+
+            return oTable.fallacies;
+        }
+
         [Test]
         public static void ParseCsv_TwoRows_CreatesOneFallacy()
         {
