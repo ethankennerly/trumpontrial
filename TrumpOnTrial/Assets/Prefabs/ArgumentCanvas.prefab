@@ -96,9 +96,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ArgumentsCsv: {fileID: 4900000, guid: 81fc559789b7bc64eb764ecf102cc0e2, type: 3}
+  m_Table:
+    argumentTextColumnName: argumentText
+    correctFallacyOptionTextColumnName: correctFallacyOptionText
+    numArguments: 0
   m_ArgumentTextColumnName: argumentText
   m_CorrectFallacyOptionTextColumnName: correctFallacyOptionText
-  m_NumArguments: 0
 --- !u!114 &272411575424298296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,10 +122,9 @@ MonoBehaviour:
     closedAnimationName: 
     argumentText: {fileID: 2721195697060671910}
   m_Feedback: {fileID: 0}
+  m_SessionPerformance: {fileID: 0}
   m_ProgressAnimator: {fileID: 0}
   m_OpponentProgressAnimator: {fileID: 0}
-  m_Verbose: 0
-  m_FallacyLister: {fileID: 0}
 --- !u!1 &1538916853946061603
 GameObject:
   m_ObjectHideFlags: 0

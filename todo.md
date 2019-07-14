@@ -60,7 +60,8 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Lister: Independent of parser.
 1. Distractor Adjuster: Bridges argument and fallacy.
 1. Argument/Fallacy: Wraps delegate assignments.
-1. Argument Table Tests: Parses tiny CSV.
+1. Arguments Table Tests: Parses tiny CSV.
+1. Arguments Table: Extracts from parser Behaviour.
 
 # Nice to have
 

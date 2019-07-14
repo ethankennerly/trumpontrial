@@ -192,11 +192,6 @@ PrefabInstance:
       objectReference: {fileID: 8087786880996960462}
     - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
         type: 3}
-      propertyPath: m_OptionViewer
-      value: 
-      objectReference: {fileID: 6817575518751657890}
-    - target: {fileID: 272411575424298296, guid: 1db25df94708b824a98d51872cb77d06,
-        type: 3}
       propertyPath: m_ArgumentView.userInterfaceAnimator
       value: 
       objectReference: {fileID: 3260829871426118454}
@@ -451,6 +446,11 @@ PrefabInstance:
       objectReference: {fileID: 5233351997560403980}
     - target: {fileID: 3505547167633693047, guid: 08280b388daa49c409c97754a47eb097,
         type: 3}
+      propertyPath: m_ScrollView.scrollRect
+      value: 
+      objectReference: {fileID: 7942889880905868215}
+    - target: {fileID: 3505547167633693047, guid: 08280b388daa49c409c97754a47eb097,
+        type: 3}
       propertyPath: m_ContentSize.content
       value: 
       objectReference: {fileID: 7942889880096839463}
@@ -636,16 +636,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 4860356566299457253, guid: 08280b388daa49c409c97754a47eb097,
-        type: 3}
-      propertyPath: m_ScrollView.scrollRect
-      value: 
-      objectReference: {fileID: 7942889880905868215}
-    - target: {fileID: 4860356566299457253, guid: 08280b388daa49c409c97754a47eb097,
-        type: 3}
-      propertyPath: m_ArgumentViewer
-      value: 
-      objectReference: {fileID: 21731772869356927}
     - target: {fileID: 3337876937626996624, guid: 08280b388daa49c409c97754a47eb097,
         type: 3}
       propertyPath: m_SizeDelta.y
