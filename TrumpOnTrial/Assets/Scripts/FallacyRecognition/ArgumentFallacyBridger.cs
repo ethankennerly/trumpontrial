@@ -61,7 +61,7 @@ namespace FineGameDesign.FallacyRecognition
             {
                 if (m_OnTextSelected == null)
                 {
-                    m_OnTextSelected = Evaluator.EvaluateFallacy;
+                    m_OnTextSelected = EvaluateFallacy;
                 }
                 return m_OnTextSelected;
             }
@@ -89,6 +89,11 @@ namespace FineGameDesign.FallacyRecognition
         private void PopulateFallacyLister(Argument argument, ArgumentRange range)
         {
             m_Bridge.optionViewer.Lister.Adjust(argument.correctFallacyOptionText);
+        }
+
+        private void EvaluateFallacy(string selectedText)
+        {
+            Evaluator.EvaluateFallacy(selectedText);
         }
     }
 }

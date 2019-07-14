@@ -1,18 +1,24 @@
 using FineGameDesign.FallacyRecognition;
 using NUnit.Framework;
 
-namespace FineGameDesign.FallacyRecognition
+namespace FineGameDesign.Tests.FallacyRecognition
 {
     public static class ArgumentsTableTests
     {
-        [Test]
-        public static void ParseCsv_TwoRows_CreatesOneArgument()
+        public static ArgumentsTable AssertOneArgumentTableColumnsNamedAC()
         {
             ArgumentsTable acTable = new ArgumentsTable();
             acTable.argumentTextColumnName = "A";
             acTable.correctFallacyOptionTextColumnName = "C";
 
             AssertOneArgument(ref acTable, "A\tC\nA1\tC1", "A1", "C1");
+            return acTable;
+        }
+
+        [Test]
+        public static void ParseCsv_TwoRows_CreatesOneArgument()
+        {
+            AssertOneArgumentTableColumnsNamedAC();
         }
 
         private static void AssertOneArgument(
@@ -36,12 +42,7 @@ namespace FineGameDesign.FallacyRecognition
         [Test]
         public static void ParseCsv_EqualText_CachesNumParses()
         {
-            ArgumentsTable acTable = new ArgumentsTable();
-            acTable.argumentTextColumnName = "A";
-            acTable.correctFallacyOptionTextColumnName = "C";
-            Assert.AreEqual(0, acTable.NumParses);
-
-            AssertOneArgument(ref acTable, "A\tC\nA1\tC1", "A1", "C1");
+            ArgumentsTable acTable = AssertOneArgumentTableColumnsNamedAC();
             Assert.AreEqual(1, acTable.NumParses);
 
             AssertOneArgument(ref acTable, "A\tC\nA1\tC1", "A1", "C1");

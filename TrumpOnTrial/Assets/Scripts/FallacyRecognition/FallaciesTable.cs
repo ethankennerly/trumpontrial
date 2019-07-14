@@ -6,7 +6,7 @@ namespace FineGameDesign.FallacyRecognition
     /// <summary>
     /// Parses CSV into fallacies.
     /// Tests:
-    /// <see cref="FineGameDesign.FallacyRecognition.FallaciesTable"/>
+    /// <see cref="FineGameDesign.Tests.FallacyRecognition.FallaciesTableTests"/>
     /// </summary>
     [Serializable]
     public struct FallaciesTable

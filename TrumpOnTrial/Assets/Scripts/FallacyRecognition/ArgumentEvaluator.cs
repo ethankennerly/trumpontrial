@@ -15,6 +15,11 @@ namespace FineGameDesign.FallacyRecognition
         public int length;
     }
 
+    /// <summary>
+    /// Parses CSV into arguments.
+    /// Tests:
+    /// <see cref="FineGameDesign.Tests.FallacyRecognition.ArgumentEvaluatorTests"/>
+    /// </summary>
     public sealed class ArgumentEvaluator
     {
         public delegate void Populate(Argument argument, ArgumentRange range);
@@ -86,7 +91,7 @@ namespace FineGameDesign.FallacyRecognition
             }
         }
 
-        public void EvaluateFallacy(string fallacyOptionText)
+        public bool EvaluateFallacy(string fallacyOptionText)
         {
             Argument argument = m_Arguments[m_ArgumentRange.current];
             m_Correct = fallacyOptionText == argument.correctFallacyOptionText;
@@ -95,6 +100,8 @@ namespace FineGameDesign.FallacyRecognition
             {
                 OnEvaluated.Invoke(m_Correct);
             }
+
+            return m_Correct;
         }
     }
 }

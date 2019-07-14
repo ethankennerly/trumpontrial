@@ -6,7 +6,7 @@ namespace FineGameDesign.FallacyRecognition
     /// <summary>
     /// Parses CSV into arguments.
     /// Tests:
-    /// <see cref="FineGameDesign.FallacyRecognition.ArgumentsTable"/>
+    /// <see cref="FineGameDesign.Tests.FallacyRecognition.ArgumentsTableTests"/>
     /// </summary>
     [Serializable]
     public struct ArgumentsTable
