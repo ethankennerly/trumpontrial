@@ -15,6 +15,8 @@ namespace FineGameDesign.FallacyRecognition
         [SerializeField]
         private ArgumentFallacyBridge m_Bridge = default;
 
+        private EvaluatorListerBridge m_EvaluatorListerBridge = new EvaluatorListerBridge();
+
         private ArgumentEvaluator.Populate m_OnPopulated;
         private ArgumentEvaluator.Populate OnPopulated
         {
@@ -35,9 +37,22 @@ namespace FineGameDesign.FallacyRecognition
             {
                 if (m_OnEvaluated == null)
                 {
-                    m_OnEvaluated = m_Bridge.optionViewer.Lister.AdjustNumDistractors;
+                    m_OnEvaluated = Lister.AdjustNumDistractors;
                 }
                 return m_OnEvaluated;
+            }
+        }
+
+        private FallacyLister m_Lister;
+        private FallacyLister Lister
+        {
+            get
+            {
+                if (m_Lister == null)
+                {
+                    m_Lister = m_Bridge.optionViewer.Lister;
+                }
+                return m_Lister;
             }
         }
 
@@ -69,10 +84,9 @@ namespace FineGameDesign.FallacyRecognition
 
         private void OnEnable()
         {
-            Evaluator.OnPopulated -= OnPopulated;
-            Evaluator.OnPopulated += OnPopulated;
-            Evaluator.OnEvaluated -= OnEvaluated;
-            Evaluator.OnEvaluated += OnEvaluated;
+            m_EvaluatorListerBridge.Evaluator = Evaluator;
+            m_EvaluatorListerBridge.Lister = Lister;
+            m_EvaluatorListerBridge.AddListeners();
 
             m_Bridge.optionViewer.OnTextSelected -= OnTextSelected;
             m_Bridge.optionViewer.OnTextSelected += OnTextSelected;
@@ -80,15 +94,14 @@ namespace FineGameDesign.FallacyRecognition
 
         private void OnDisable()
         {
-            Evaluator.OnEvaluated -= OnEvaluated;
-            Evaluator.OnPopulated -= OnPopulated;
+            m_EvaluatorListerBridge.RemoveListeners();
 
             m_Bridge.optionViewer.OnTextSelected -= OnTextSelected;
         }
 
         private void PopulateFallacyLister(Argument argument, ArgumentRange range)
         {
-            m_Bridge.optionViewer.Lister.Adjust(argument.correctFallacyOptionText);
+            Lister.Adjust(argument.correctFallacyOptionText);
         }
 
         private void EvaluateFallacy(string selectedText)

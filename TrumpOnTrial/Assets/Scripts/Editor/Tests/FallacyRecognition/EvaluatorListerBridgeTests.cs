@@ -12,6 +12,9 @@ namespace FineGameDesign.Tests.FallacyRecognition
         public static void Answer_TwoArguments_EndsSession()
         {
             EvaluatorListerBridge bridge = new EvaluatorListerBridge();
+            bridge.Evaluator = new ArgumentEvaluator();
+            bridge.Lister = new FallacyLister();
+            bridge.AddListeners();
             OptionDifficulty difficulty = bridge.Lister.Difficulty;
             difficulty.addDistractorsPerCorrect = 1;
             bridge.Lister.Difficulty = difficulty;

@@ -3,23 +3,24 @@ using System;
 namespace FineGameDesign.FallacyRecognition
 {
     /// <summary>
-    /// TODO: Bridges evaluator and lister.
+    /// Fallacy Lister subscribes to from Argument Evaluator.
     /// Tests:
     /// <see cref="FineGameDesign.Tests.FallacyRecognition.EvaluatorListerBridgeTests"/>
     /// </summary>
-    [Serializable]
     public sealed class EvaluatorListerBridge
     {
-        private ArgumentEvaluator m_Evaluator = new ArgumentEvaluator();
+        private ArgumentEvaluator m_Evaluator;
         public ArgumentEvaluator Evaluator
         {
             get { return m_Evaluator; }
+            set { m_Evaluator = value; }
         }
 
-        private FallacyLister m_Lister = new FallacyLister();
+        private FallacyLister m_Lister;
         public FallacyLister Lister
         {
             get { return m_Lister; }
+            set { m_Lister = value; }
         }
 
         private ArgumentEvaluator.Populate m_OnPopulated;
@@ -48,17 +49,7 @@ namespace FineGameDesign.FallacyRecognition
             }
         }
 
-        public EvaluatorListerBridge()
-        {
-            AddListeners();
-        }
-
-        ~EvaluatorListerBridge()
-        {
-            RemoveListeners();
-        }
-
-        private void AddListeners()
+        public void AddListeners()
         {
             Evaluator.OnPopulated -= OnPopulated;
             Evaluator.OnPopulated += OnPopulated;
@@ -66,7 +57,7 @@ namespace FineGameDesign.FallacyRecognition
             Evaluator.OnEvaluated += OnEvaluated;
         }
 
-        private void RemoveListeners()
+        public void RemoveListeners()
         {
             Evaluator.OnPopulated -= OnPopulated;
             Evaluator.OnEvaluated -= OnEvaluated;
