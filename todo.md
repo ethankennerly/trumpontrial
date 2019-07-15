@@ -72,12 +72,12 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Recognition Session Tests: Setup.
 1. Fallacies: Doubles length of option text.
 1. Fallacy Recognition Session Tests: Pass 2 args.
+1. Evaluator Lister Bridge: Renames.
 
 # Nice to have
 
-1. [ ] Argument Fallacy Bridge: Renames.
-1. [ ] Argument Fallacy Bridge Tests: All args.
-1. [ ] Argument Fallacy Bridge: Integrates.
+1. [ ] Evaluator Lister Bridge: Integrates.
+1. [ ] Evaluator Lister Bridge Tests: All args.
 1. [ ] How can Rob clearly recognize a fallacy?
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.

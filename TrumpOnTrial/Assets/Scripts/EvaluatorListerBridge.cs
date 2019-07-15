@@ -5,10 +5,10 @@ namespace FineGameDesign.FallacyRecognition
     /// <summary>
     /// TODO: Bridges evaluator and lister.
     /// Tests:
-    /// <see cref="FineGameDesign.Tests.FallacyRecognition.FallacyRecognitionSessionTests"/>
+    /// <see cref="FineGameDesign.Tests.FallacyRecognition.EvaluatorListerBridgeTests"/>
     /// </summary>
     [Serializable]
-    public sealed class FallacyRecognitionSession
+    public sealed class EvaluatorListerBridge
     {
         private ArgumentEvaluator m_Evaluator = new ArgumentEvaluator();
         public ArgumentEvaluator Evaluator
@@ -48,12 +48,12 @@ namespace FineGameDesign.FallacyRecognition
             }
         }
 
-        public FallacyRecognitionSession()
+        public EvaluatorListerBridge()
         {
             AddListeners();
         }
 
-        ~FallacyRecognitionSession()
+        ~EvaluatorListerBridge()
         {
             RemoveListeners();
         }
