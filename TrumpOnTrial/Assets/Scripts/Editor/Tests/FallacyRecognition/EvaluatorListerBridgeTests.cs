@@ -1,4 +1,5 @@
 using FineGameDesign.FallacyRecognition;
+using FineGameDesign.UI;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -73,12 +74,12 @@ namespace FineGameDesign.Tests.FallacyRecognition
         {
             EvaluatorListerBridge bridge = new EvaluatorListerBridge();
             bridge.Evaluator = new ArgumentEvaluator();
-            bridge.Lister = new FallacyLister();
+            bridge.Lister = new TextLister();
             bridge.AddListeners();
             OptionDifficulty difficulty = bridge.Lister.Difficulty;
             difficulty.addDistractorsPerCorrect = 1;
             bridge.Lister.Difficulty = difficulty;
-            bridge.Lister.PopulateFallacies(FallacyParserTests.ParseFromPrefab());
+            bridge.Lister.PopulatePossibleTexts(FallacyParserTests.ParseFromPrefab());
             bridge.Evaluator.Arguments = ArgumentParserTests.ParseFromPrefab();
             return bridge;
         }
@@ -86,7 +87,7 @@ namespace FineGameDesign.Tests.FallacyRecognition
 
         private static void AssertAnswerCorrectIncrementsNumDistractors(EvaluatorListerBridge bridge)
         {
-            string correctFallacyText = bridge.Lister.Difficulty.requiredFallacyText;
+            string correctFallacyText = bridge.Lister.Difficulty.requiredText;
             Assert.IsNotNull(correctFallacyText,
                 "correct fallacy text. Was lister populated?");
             Assert.AreEqual(1, bridge.Lister.Difficulty.numDistractors,
@@ -100,15 +101,15 @@ namespace FineGameDesign.Tests.FallacyRecognition
 
         private static void AssertAnswerWrongDecrementsNumDistractors(EvaluatorListerBridge bridge)
         {
-            string correctFallacyText = bridge.Lister.Difficulty.requiredFallacyText;
+            string correctFallacyText = bridge.Lister.Difficulty.requiredText;
             Assert.IsNotNull(correctFallacyText,
                 "correct fallacy text. Was lister populated?");
             string wrongFallacyText = correctFallacyText;
-            foreach (Fallacy option in bridge.Lister.Difficulty.options)
+            foreach (string optionText in bridge.Lister.Difficulty.options)
             {
-                if (option.optionText != correctFallacyText)
+                if (optionText != correctFallacyText)
                 {
-                    wrongFallacyText = option.optionText;
+                    wrongFallacyText = optionText;
                 }
             }
             Assert.AreNotEqual(wrongFallacyText, correctFallacyText);

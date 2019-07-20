@@ -1,3 +1,4 @@
+using FineGameDesign.UI;
 using System;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace FineGameDesign.FallacyRecognition
             {
                 if (m_OnPopulated == null)
                 {
-                    m_OnPopulated = PopulateFallacyLister;
+                    m_OnPopulated = PopulateTextLister;
                 }
                 return m_OnPopulated;
             }
@@ -43,8 +44,8 @@ namespace FineGameDesign.FallacyRecognition
             }
         }
 
-        private FallacyLister m_Lister;
-        private FallacyLister Lister
+        private TextLister m_Lister;
+        private TextLister Lister
         {
             get
             {
@@ -99,7 +100,7 @@ namespace FineGameDesign.FallacyRecognition
             m_Bridge.optionViewer.OnTextSelected -= OnTextSelected;
         }
 
-        private void PopulateFallacyLister(Argument argument, ArgumentRange range)
+        private void PopulateTextLister(Argument argument, ArgumentRange range)
         {
             Lister.Adjust(argument.correctFallacyOptionText);
         }

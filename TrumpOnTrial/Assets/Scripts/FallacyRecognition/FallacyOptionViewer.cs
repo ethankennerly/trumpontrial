@@ -33,8 +33,8 @@ namespace FineGameDesign.FallacyRecognition
         private FallacyParser m_Parser = default;
 
         [SerializeField]
-        private FallacyLister m_Lister = default;
-        public FallacyLister Lister
+        private TextLister m_Lister = default;
+        public TextLister Lister
         {
             get { return m_Lister; }
         }
@@ -48,8 +48,8 @@ namespace FineGameDesign.FallacyRecognition
         [SerializeField]
         private OptionView[] m_OptionViews = default;
 
-        private FallacyLister.Populate m_OnOptionsChanged;
-        private FallacyLister.Populate OnOptionsChanged
+        private TextLister.Populate m_OnOptionsChanged;
+        private TextLister.Populate OnOptionsChanged
         {
             get
             {
@@ -65,8 +65,7 @@ namespace FineGameDesign.FallacyRecognition
         {
             m_Lister.OnOptionsChanged -= OnOptionsChanged;
             m_Lister.OnOptionsChanged += OnOptionsChanged;
-            m_Parser.ParseFallaciesOnce();
-            m_Lister.PopulateFallacies(m_Parser.Fallacies);
+            m_Lister.PopulatePossibleTexts(m_Parser.Strings);
         }
 
         private void OnDisable()
@@ -75,43 +74,43 @@ namespace FineGameDesign.FallacyRecognition
             RemoveListeners(m_OptionViews);
         }
 
-        private void UpdateOptions(List<Fallacy> fallacies)
+        private void UpdateOptions(List<string> optionTexts)
         {
-            PopulateOptions(fallacies, m_OptionViews);
-            ResizeContent(m_ContentSize, fallacies.Count);
+            PopulateOptions(optionTexts, m_OptionViews);
+            ResizeContent(m_ContentSize, optionTexts.Count);
             ScrollRectSnapper.SnapToFirst(ref m_ScrollView);
         }
 
         /// <summary>
         /// Copies each text and shows each root.
-        /// Hides any options beyond number of fallacies.
+        /// Hides any options beyond number of option texts.
         ///
         /// Assigns option index and button subscribes to selected event.
         /// </summary>
         private void PopulateOptions(
-            List<Fallacy> fallacies,
+            List<string> optionTexts,
             OptionView[] optionViews)
         {
-            int numFallacies = fallacies == null ? 0 : fallacies.Count;
+            int numOptionTexts = optionTexts == null ? 0 : optionTexts.Count;
             int numOptions = optionViews.Length;
-            Debug.Assert(numOptions >= numFallacies,
+            Debug.Assert(numOptions >= numOptionTexts,
                 "Expected at least " + numOptions + " option views " +
-                "equal or greater than " + numFallacies + " fallacies."
+                "equal or greater than " + numOptionTexts + " optionTexts."
             );
-            if (numOptions < numFallacies)
+            if (numOptions < numOptionTexts)
             {
-                numFallacies = numOptions;
+                numOptionTexts = numOptions;
             }
 
-            for (int optionIndex = 0; optionIndex < numFallacies; ++optionIndex)
+            for (int optionIndex = 0; optionIndex < numOptionTexts; ++optionIndex)
             {
                 OptionView optionView = optionViews[optionIndex];
-                Fallacy fallacy = fallacies[optionIndex];
-                AddListener(optionView, fallacy.optionText);
+                string optionText = optionTexts[optionIndex];
+                AddListener(optionView, optionText);
                 optionView.optionRoot.SetActive(true);
             }
 
-            for (int optionIndex = numFallacies; optionIndex < numOptions; ++optionIndex)
+            for (int optionIndex = numOptionTexts; optionIndex < numOptions; ++optionIndex)
             {
                 OptionView optionView = optionViews[optionIndex];
                 optionView.optionRoot.SetActive(false);

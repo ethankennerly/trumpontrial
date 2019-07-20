@@ -1,3 +1,4 @@
+using FineGameDesign.UI;
 using System;
 
 namespace FineGameDesign.FallacyRecognition
@@ -16,8 +17,8 @@ namespace FineGameDesign.FallacyRecognition
             set { m_Evaluator = value; }
         }
 
-        private FallacyLister m_Lister;
-        public FallacyLister Lister
+        private TextLister m_Lister;
+        public TextLister Lister
         {
             get { return m_Lister; }
             set { m_Lister = value; }
@@ -30,7 +31,7 @@ namespace FineGameDesign.FallacyRecognition
             {
                 if (m_OnPopulated == null)
                 {
-                    m_OnPopulated = PopulateFallacyLister;
+                    m_OnPopulated = PopulateTextLister;
                 }
                 return m_OnPopulated;
             }
@@ -63,7 +64,7 @@ namespace FineGameDesign.FallacyRecognition
             Evaluator.OnEvaluated -= OnEvaluated;
         }
 
-        private void PopulateFallacyLister(Argument argument, ArgumentRange range)
+        private void PopulateTextLister(Argument argument, ArgumentRange range)
         {
             Lister.Adjust(argument.correctFallacyOptionText);
         }
