@@ -61,6 +61,10 @@ namespace FineGameDesign.FallacyRecognition
 
         public void ConfigureRange(int start, int end)
         {
+            if (end > m_Arguments.Length)
+            {
+                end = m_Arguments.Length;
+            }
             m_ArgumentRange.start = start;
             m_ArgumentRange.end = end;
             m_ArgumentRange.length = end - start;

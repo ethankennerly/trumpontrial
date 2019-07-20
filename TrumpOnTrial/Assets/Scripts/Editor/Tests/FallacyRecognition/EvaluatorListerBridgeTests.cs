@@ -20,12 +20,25 @@ namespace FineGameDesign.Tests.FallacyRecognition
         {
             EvaluatorListerBridge bridge = SetUpBridge();
             AssertAnswerRange_ChangesNumDistractors_And_EndsSession(bridge, 3, 18);
+            Assert.AreEqual(15, bridge.Evaluator.Range.length,
+                "Range length");
+        }
+
+        [Test]
+        public static void ConfigureRange_OutOfRange_Clamps()
+        {
+            EvaluatorListerBridge bridge = SetUpBridge();
+            AssertAnswerRange_ChangesNumDistractors_And_EndsSession(bridge, 3, 99);
+            Assert.AreEqual(15, bridge.Evaluator.Range.length,
+                "Range length");
         }
 
         private static void AssertAnswerRange_ChangesNumDistractors_And_EndsSession(
             EvaluatorListerBridge bridge, int argumentStart, int argumentEnd)
         {
             bridge.Evaluator.ConfigureRange(argumentStart, argumentEnd);
+            argumentStart = bridge.Evaluator.Range.start;
+            argumentEnd = bridge.Evaluator.Range.end;
 
             bridge.Evaluator.StartArguments();
             Assert.AreEqual(argumentStart, bridge.Evaluator.Range.current,
