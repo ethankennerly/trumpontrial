@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Parser: {fileID: 8988940498520255482}
-  m_TextOptionViewer: {fileID: 3505547167633693047}
+  m_Scroller: {fileID: 3505547167633693047}
 --- !u!1 &8035639060165263970
 GameObject:
   m_ObjectHideFlags: 0

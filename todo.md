@@ -83,9 +83,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Option Viewer: Integrates Text Lister.
 1. Text Option Viewer: Renames from Fallacy.
 1. Fallacy Option Adapter: Extracts from Text Opt.
+1. Text Option Scroller: Renames from Viewer.
 
 # Nice to have
 
+1. [ ] Text Option Scroller: Renames from Viewer.
 1. [ ] Evaluator Lister Bridge: Tracks progress.
 1. [ ] Evaluator Lister Bridge: Integrates progress.
 1. [ ] Session Viewer Tests: non-arguments.

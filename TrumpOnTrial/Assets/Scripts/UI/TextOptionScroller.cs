@@ -23,7 +23,7 @@ namespace FineGameDesign.UI
         public float heightPerOption;
     }
 
-    public sealed class TextOptionViewer : MonoBehaviour
+    public sealed class TextOptionScroller : MonoBehaviour
     {
         public delegate void SelectText(string optionText);
         public event SelectText OnTextSelected;

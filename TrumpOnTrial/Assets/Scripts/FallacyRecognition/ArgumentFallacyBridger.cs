@@ -8,7 +8,7 @@ namespace FineGameDesign.FallacyRecognition
     public struct ArgumentFallacyBridge
     {
         public ArgumentViewer argumentViewer;
-        public TextOptionViewer optionViewer;
+        public TextOptionScroller optionViewer;
     }
 
     public sealed class ArgumentFallacyBridger : MonoBehaviour
@@ -70,8 +70,8 @@ namespace FineGameDesign.FallacyRecognition
             }
         }
 
-        private TextOptionViewer.SelectText m_OnTextSelected;
-        private TextOptionViewer.SelectText OnTextSelected
+        private TextOptionScroller.SelectText m_OnTextSelected;
+        private TextOptionScroller.SelectText OnTextSelected
         {
             get
             {
