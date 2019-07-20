@@ -76,10 +76,10 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Evaluator Lister Bridge: Integrates.
 1. Evaluator Lister Bridge Tests: Extracts setup.
 1. Evaluator Lister Bridge Tests: Asserts range.
+1. Evaluator Lister Bridge Tests: 15 answers.
 
 # Nice to have
 
-1. [ ] Evaluator Lister Bridge Tests: All args.
 1. [ ] Option Viewer Tests: non-fallacies.
 1. [ ] Option Viewer: Integrates.
 1. [ ] Evaluator Lister Bridge: Tracks progress.

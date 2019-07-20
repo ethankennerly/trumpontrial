@@ -9,10 +9,17 @@ namespace FineGameDesign.Tests.FallacyRecognition
     public static class EvaluatorListerBridgeTests
     {
         [Test]
-        public static void Answer_TwoArguments_EndsSession()
+        public static void Answer_ThreeArguments_EndsSession()
         {
             EvaluatorListerBridge bridge = SetUpBridge();
-            AssertAnswerRange_ChangesNumDistractors_And_EndsSession(bridge, 0, 2);
+            AssertAnswerRange_ChangesNumDistractors_And_EndsSession(bridge, 0, 3);
+        }
+
+        [Test]
+        public static void Answer_FifteenArguments_EndsSession()
+        {
+            EvaluatorListerBridge bridge = SetUpBridge();
+            AssertAnswerRange_ChangesNumDistractors_And_EndsSession(bridge, 3, 18);
         }
 
         private static void AssertAnswerRange_ChangesNumDistractors_And_EndsSession(
@@ -24,10 +31,10 @@ namespace FineGameDesign.Tests.FallacyRecognition
             Assert.AreEqual(argumentStart, bridge.Evaluator.Range.current,
                 "Current argument index");
 
+            bool correct = true;
             for (int argumentIndex = argumentStart; argumentIndex < argumentEnd; ++argumentIndex)
             {
-                bool indexIsEven = (argumentIndex % 2) == 0;
-                if (indexIsEven)
+                if (correct)
                 {
                     AssertAnswerCorrectIncrementsNumDistractors(bridge);
                 }
@@ -39,6 +46,8 @@ namespace FineGameDesign.Tests.FallacyRecognition
                 Assert.AreEqual(argumentIndex, bridge.Evaluator.Range.current,
                     "Current argument index");
                 bridge.Evaluator.NextArgument();
+
+                correct = !correct;
             }
 
             Assert.AreEqual(argumentEnd, bridge.Evaluator.Range.current,
