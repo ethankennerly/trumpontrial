@@ -79,7 +79,26 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 
 1. [ ] Evaluator Lister Bridge Tests: All args.
 1. [ ] Option Viewer Tests: non-fallacies.
-1. [ ] Prompt Viewer Tests: non-arguments.
+1. [ ] Option Viewer: Integrates.
+1. [ ] Evaluator Lister Bridge: Tracks progress.
+1. [ ] Evaluator Lister Bridge: Integrates progress.
+1. [ ] Session Viewer Tests: non-arguments.
+1. [ ] Session Viewer Tests: Integrates.
+1. [ ] CSV Parser Tests: Non-fallacy, non-argument.
+1. [ ] CSV Parser Tests: Edit-time scriptable object.
+1. [ ] When swiping near the top, how can Marie scroll?
+1. [ ] How can Marie interpret red regress?
+1. [ ] How can Marie quickly distinguish fallacies?
+1. [ ] How can Marie like evaluating Trump's argument?
+1. [ ] How can Marie see star is a session goal?
+1. [ ] How can Marie see already did a set?
+1. [ ] How can Marie recognizes Trump was quoted?
+1. [ ] How can Marie recognize fallacies are easy or hard?
+1. [ ] About Russia, how can Marie get context?
+1. [ ] How can Marie interpret session results?
+1. [ ] How can Marie recognize distorting option?
+1. [ ] How can Marie categorize "Everbody knew?"
+1. [ ] How can Marie recognize Fox News tweet?
 1. [ ] How can Rob clearly recognize a fallacy?
 1. [ ] On results, Trump says impeached/you're fired.
 1. [ ] Option to link to read intro to fallacies.
