@@ -28,10 +28,6 @@ namespace FineGameDesign.UI
         public delegate void SelectText(string optionText);
         public event SelectText OnTextSelected;
 
-        // TODO: Ethan: Extract to FallacyOptionViewer.
-        [SerializeField]
-        private FineGameDesign.FallacyRecognition.FallacyParser m_Parser = default;
-
         [SerializeField]
         private TextLister m_Lister = default;
         public TextLister Lister
@@ -65,7 +61,6 @@ namespace FineGameDesign.UI
         {
             m_Lister.OnOptionsChanged -= OnOptionsChanged;
             m_Lister.OnOptionsChanged += OnOptionsChanged;
-            m_Lister.PopulatePossibleTexts(m_Parser.Strings);
         }
 
         private void OnDisable()
