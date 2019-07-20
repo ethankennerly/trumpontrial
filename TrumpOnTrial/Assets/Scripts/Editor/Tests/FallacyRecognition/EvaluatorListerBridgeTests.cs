@@ -8,6 +8,45 @@ namespace FineGameDesign.Tests.FallacyRecognition
 {
     public static class EvaluatorListerBridgeTests
     {
+        [Test]
+        public static void Answer_TwoArguments_EndsSession()
+        {
+            EvaluatorListerBridge bridge = SetUpBridge();
+            AssertAnswerRange_ChangesNumDistractors_And_EndsSession(bridge, 0, 2);
+        }
+
+        private static void AssertAnswerRange_ChangesNumDistractors_And_EndsSession(
+            EvaluatorListerBridge bridge, int argumentStart, int argumentEnd)
+        {
+            bridge.Evaluator.ConfigureRange(argumentStart, argumentEnd);
+
+            bridge.Evaluator.StartArguments();
+            Assert.AreEqual(argumentStart, bridge.Evaluator.Range.current,
+                "Current argument index");
+
+            for (int argumentIndex = argumentStart; argumentIndex < argumentEnd; ++argumentIndex)
+            {
+                bool indexIsEven = (argumentIndex % 2) == 0;
+                if (indexIsEven)
+                {
+                    AssertAnswerCorrectIncrementsNumDistractors(bridge);
+                }
+                else
+                {
+                    AssertAnswerWrongDecrementsNumDistractors(bridge);
+                }
+
+                Assert.AreEqual(argumentIndex, bridge.Evaluator.Range.current,
+                    "Current argument index");
+                bridge.Evaluator.NextArgument();
+            }
+
+            Assert.AreEqual(argumentEnd, bridge.Evaluator.Range.current,
+                "Current argument index after ended.");
+            Assert.IsTrue(bridge.Evaluator.Range.ended,
+                "Session ended");
+        }
+
         private static EvaluatorListerBridge SetUpBridge()
         {
             EvaluatorListerBridge bridge = new EvaluatorListerBridge();
@@ -22,28 +61,6 @@ namespace FineGameDesign.Tests.FallacyRecognition
             return bridge;
         }
 
-        [Test]
-        public static void Answer_TwoArguments_EndsSession()
-        {
-            EvaluatorListerBridge bridge = SetUpBridge();
-            bridge.Evaluator.ConfigureRange(0, 2);
-
-            bridge.Evaluator.StartArguments();
-            Assert.AreEqual(0, bridge.Evaluator.Range.current,
-                "Current argument index");
-            AssertAnswerCorrectIncrementsNumDistractors(bridge);
-
-            bridge.Evaluator.NextArgument();
-            Assert.AreEqual(1, bridge.Evaluator.Range.current,
-                "Current argument index");
-            AssertAnswerWrongDecrementsNumDistractors(bridge);
-
-            bridge.Evaluator.NextArgument();
-            Assert.AreEqual(2, bridge.Evaluator.Range.current,
-                "Current argument index");
-            Assert.IsTrue(bridge.Evaluator.Range.ended,
-                "Session ended");
-        }
 
         private static void AssertAnswerCorrectIncrementsNumDistractors(EvaluatorListerBridge bridge)
         {

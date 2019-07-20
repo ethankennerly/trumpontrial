@@ -75,6 +75,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Evaluator Lister Bridge: Renames.
 1. Evaluator Lister Bridge: Integrates.
 1. Evaluator Lister Bridge Tests: Extracts setup.
+1. Evaluator Lister Bridge Tests: Asserts range.
 
 # Nice to have
 
