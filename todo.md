@@ -88,11 +88,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 
 # Nice to have
 
-1. [ ] Text Option Scroller: Renames from Viewer.
 1. [ ] Evaluator Lister Bridge: Tracks progress.
 1. [ ] Evaluator Lister Bridge: Integrates progress.
 1. [ ] Session Viewer Tests: non-arguments.
 1. [ ] Session Viewer Tests: Integrates.
+1. [ ] Option Text Parser: Extracts from Fallacy.
 1. [ ] CSV Parser Tests: Non-fallacy, non-argument.
 1. [ ] CSV Parser Tests: Edit-time scriptable object.
 1. [ ] When swiping near the top, how can Marie scroll?
