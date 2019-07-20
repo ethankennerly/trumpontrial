@@ -8,8 +8,7 @@ namespace FineGameDesign.Tests.FallacyRecognition
 {
     public static class EvaluatorListerBridgeTests
     {
-        [Test]
-        public static void Answer_TwoArguments_EndsSession()
+        private static EvaluatorListerBridge SetUpBridge()
         {
             EvaluatorListerBridge bridge = new EvaluatorListerBridge();
             bridge.Evaluator = new ArgumentEvaluator();
@@ -20,6 +19,13 @@ namespace FineGameDesign.Tests.FallacyRecognition
             bridge.Lister.Difficulty = difficulty;
             bridge.Lister.PopulateFallacies(FallacyParserTests.ParseFromPrefab());
             bridge.Evaluator.Arguments = ArgumentParserTests.ParseFromPrefab();
+            return bridge;
+        }
+
+        [Test]
+        public static void Answer_TwoArguments_EndsSession()
+        {
+            EvaluatorListerBridge bridge = SetUpBridge();
             bridge.Evaluator.ConfigureRange(0, 2);
 
             bridge.Evaluator.StartArguments();

@@ -74,6 +74,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Fallacy Recognition Session Tests: Pass 2 args.
 1. Evaluator Lister Bridge: Renames.
 1. Evaluator Lister Bridge: Integrates.
+1. Evaluator Lister Bridge Tests: Extracts setup.
 
 # Nice to have
 
