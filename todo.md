@@ -84,6 +84,7 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Text Option Viewer: Renames from Fallacy.
 1. Fallacy Option Adapter: Extracts from Text Opt.
 1. Text Option Scroller: Renames from Viewer.
+1. Text Lister: Adapter assigns possible texts.
 
 # Nice to have
 

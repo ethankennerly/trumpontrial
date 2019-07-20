@@ -13,8 +13,8 @@ namespace FineGameDesign.UI
         public int addDistractorsPerCorrect;
         public string requiredText;
         public List<string> options;
+        public string[] possibleTexts;
         internal bool correct;
-        internal string[] possibleTexts;
     }
 
     [Serializable]
@@ -31,21 +31,25 @@ namespace FineGameDesign.UI
             set { m_Difficulty = value; }
         }
 
+        public void PopulatePossibleTexts(string[] possibleTexts)
+        {
+            m_Difficulty.possibleTexts = possibleTexts;
+            UpdatePossibleTexts();
+        }
+
         /// <summary>
         /// Defaults min and max distractors.
         /// Otherwise, when not set in editor, no distractors.
         /// </summary>
-        public void PopulatePossibleTexts(string[] possibleTexts)
+        public void UpdatePossibleTexts()
         {
-            m_Difficulty.possibleTexts = possibleTexts;
-
             if (m_Difficulty.minDistractors <= 0)
             {
                 m_Difficulty.minDistractors = 1;
             }
             if (m_Difficulty.maxDistractors <= 0)
             {
-                m_Difficulty.maxDistractors = possibleTexts.Length;
+                m_Difficulty.maxDistractors = m_Difficulty.possibleTexts.Length;
             }
 
             AdjustNumDistractors(false);

@@ -69,6 +69,11 @@ namespace FineGameDesign.UI
             RemoveListeners(m_OptionViews);
         }
 
+        private void Start()
+        {
+            m_Lister.UpdatePossibleTexts();
+        }
+
         private void UpdateOptions(List<string> optionTexts)
         {
             PopulateOptions(optionTexts, m_OptionViews);
