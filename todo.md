@@ -81,11 +81,11 @@ Android/WebGL: <http://finegamedesign.com/trumpontrial>
 1. Text Lister Tests: Populate invokes change.
 1. String Array Interface: Assigns parser in editor.
 1. Fallacy Option Viewer: Integrates Text Lister.
+1. Text Option Viewer: Renames from Fallacy.
 
 # Nice to have
 
-1. [ ] Text Option Viewer Tests: 2 strings.
-1. [ ] Option Viewer: Integrates.
+1. [ ] Fallacy Option Viewer: Extracts from Text Opt.
 1. [ ] Evaluator Lister Bridge: Tracks progress.
 1. [ ] Evaluator Lister Bridge: Integrates progress.
 1. [ ] Session Viewer Tests: non-arguments.

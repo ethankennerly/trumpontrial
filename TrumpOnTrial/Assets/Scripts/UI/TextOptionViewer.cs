@@ -1,4 +1,3 @@
-using FineGameDesign.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace FineGameDesign.FallacyRecognition
+namespace FineGameDesign.UI
 {
     [Serializable]
     public struct OptionView
@@ -24,13 +23,14 @@ namespace FineGameDesign.FallacyRecognition
         public float heightPerOption;
     }
 
-    public sealed class FallacyOptionViewer : MonoBehaviour
+    public sealed class TextOptionViewer : MonoBehaviour
     {
-        public delegate void SelectText(string fallacyOptionText);
+        public delegate void SelectText(string optionText);
         public event SelectText OnTextSelected;
 
+        // TODO: Ethan: Extract to FallacyOptionViewer.
         [SerializeField]
-        private FallacyParser m_Parser = default;
+        private FineGameDesign.FallacyRecognition.FallacyParser m_Parser = default;
 
         [SerializeField]
         private TextLister m_Lister = default;
